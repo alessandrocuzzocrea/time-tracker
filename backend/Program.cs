@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +9,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var CustomAllowSpecificOrigins = "CustomAllowSpecificOrigins";
+builder.Services.AddDbContext<MyDbContext>(options =>
+        options.UseSqlite("Data Source=mydatabase.db"));
 
+var CustomAllowSpecificOrigins = "CustomAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "CustomAllowSpecificOrigins",
