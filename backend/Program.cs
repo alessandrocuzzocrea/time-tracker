@@ -34,7 +34,7 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapGet("/test", () => {
     var result = new { Items = new [] { "1", "2", "3" } };
