@@ -10,3 +10,7 @@
 *.nuget.props
 *.nuget.targets
 *.lock.json
+
+*.db
+*.db-shm
+*.db-wal
