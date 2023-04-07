@@ -20,6 +20,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
+app.MapGet("/test", () => {
+    var result = new { Items = new [] { "1", "2", "3" } };
+    return result;
+});
+
+app.MapGet("/test2", () => {
+    var result = new { Items = new [] { "1", "2", "3" } };
+    return result;
+});
+
 app.MapControllers();
 
 app.Run();
