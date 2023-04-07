@@ -1,0 +1,12 @@
+# .NET Core and Visual Studio files
+**/bin/
+**/obj/
+**/*.suo
+**/*.user
+.vs/
+*.csproj.user
+
+# NuGet packages
+*.nuget.props
+*.nuget.targets
+*.lock.json
