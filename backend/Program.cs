@@ -18,7 +18,7 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
         options.UseSqlite("Data Source=mydatabase.db"));
 
-builder.Services.AddIdentity<ApplicationUser, MyRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
         .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
         .AddDefaultTokenProviders();
 
