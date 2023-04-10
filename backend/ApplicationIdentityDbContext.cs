@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, MyRole, int>
 {
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
     public ApplicationIdentityDbContext(DbContextOptions<ApplicationIdentityDbContext> options) : base(options)
     {
     }

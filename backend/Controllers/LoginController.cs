@@ -15,7 +15,7 @@ public class LoginController : ControllerBase
         _userManager = userManager;
     }
 
-    // [HttpPost("/login")]
+    [HttpPost("/login")]
     public async Task<IActionResult> Login(string email, string password)
     {
         // Response.Headers.Add("Set-Cookie", $"user-id={userId}; expires={DateTimeOffset.Now.AddDays(7).ToString("R")}; path=/; HttpOnly");
