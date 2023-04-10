@@ -8,7 +8,6 @@ public class LoginController : ControllerBase
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
 
-
     public LoginController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
     {
         _signInManager = signInManager;
@@ -16,15 +15,12 @@ public class LoginController : ControllerBase
     }
 
     [HttpPost("/login")]
-    public async Task<IActionResult> Login(string email, string password)
+    public async Task<IActionResult> Login(LoginViewModel model)
     {
-        // Response.Headers.Add("Set-Cookie", $"user-id={userId}; expires={DateTimeOffset.Now.AddDays(7).ToString("R")}; path=/; HttpOnly");
-        // return Ok(new { Message = $"{userId} logged-in" });
-
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(
-                email, password, true, lockoutOnFailure: true);
+                model.UserName, model.Password, true, lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
@@ -45,7 +41,7 @@ public class LoginController : ControllerBase
 
     [HttpPost]
     [Route("/register")]
-    public async Task<IActionResult> Register(string userName, string email)
+    public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -54,13 +50,13 @@ public class LoginController : ControllerBase
 
         var user = new ApplicationUser
         {
-            UserName = userName,
-            Email = email,
+            UserName = model.UserName,
+            // Email = model.,
             // FirstName = model.FirstName,
             // LastName = model.LastName
         };
 
-        var result = await _userManager.CreateAsync(user, "123456");
+        var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
         {
