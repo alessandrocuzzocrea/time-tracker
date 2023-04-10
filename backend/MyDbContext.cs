@@ -17,6 +17,4 @@ public class MyDbContext : DbContext
 
 public class User : IdentityUser
 {
-    public int Id { get; set; }
-    public string UserName { get; set; }
 }
