@@ -22,12 +22,12 @@ namespace TimeTracker.Controllers
         }
 
         [HttpGet("me")]
-        public async Task<ActionResult<APIMeResponse>> GetMe()
+        public async Task<ActionResult<MeResponse>> GetMe()
         {
             // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             // return Ok(new { userId });
             var user = await _userManager.GetUserAsync(User);
-            return user != null ? Ok(new APIMeResponse(user)) : NotFound("NotFound");
+            return user != null ? Ok(new MeResponse(user)) : NotFound("NotFound");
         }
 
         [HttpGet("users")]

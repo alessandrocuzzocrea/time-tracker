@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class LoginController : ControllerBase
 {
     private readonly SignInManager<ApplicationUser> _signInManager;
@@ -14,7 +14,7 @@ public class LoginController : ControllerBase
         _userManager = userManager;
     }
 
-    [HttpPost("/login")]
+    [HttpPost("login")]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (ModelState.IsValid)
@@ -39,8 +39,15 @@ public class LoginController : ControllerBase
         return BadRequest(ModelState);
     }
 
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok("Cool");
+    }
+
     [HttpPost]
-    [Route("/register")]
+    [Route("register")]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (!ModelState.IsValid)
