@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TimeTracker;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
         options.UseSqlite("Data Source=mydatabase.db"));
 
-builder.Services.AddIdentity<User, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
+builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
+        options.UseSqlite("Data Source=mydatabase.db"));
+
+builder.Services.AddIdentity<ApplicationUser, MyRole>()
+        .AddEntityFrameworkStores<MyDbContext>()
         .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -25,7 +30,7 @@ var CustomAllowSpecificOrigins = "CustomAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "CustomAllowSpecificOrigins",
-                    policy  =>
+                    policy =>
                     {
                         policy
                             .AllowAnyOrigin()
@@ -49,13 +54,15 @@ if (app.Environment.IsDevelopment())
 
 // app.UseAuthorization();
 
-app.MapGet("/test", () => {
-    var result = new { Items = new [] { "1", "2", "3" } };
+app.MapGet("/test", () =>
+{
+    var result = new { Items = new[] { "1", "2", "3" } };
     return result;
 });
 
-app.MapGet("/test2", () => {
-    var result = new { Items = new [] { "1", "2", "3" } };
+app.MapGet("/test2", () =>
+{
+    var result = new { Items = new[] { "1", "2", "3" } };
     return result;
 });
 
