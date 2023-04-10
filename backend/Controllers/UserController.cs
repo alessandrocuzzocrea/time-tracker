@@ -1,28 +1,42 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace TimeTracker.Controllers
 {
+    [Authorize]
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly MyDbContext _dbContext;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserController(MyDbContext dbContext)
+        public UserController(UserManager<ApplicationUser> userManager)
         {
-            _dbContext = dbContext;
+            _userManager = userManager;
         }
 
-        // [HttpGet]
-        // public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
-        // {
-        //     var users = await _dbContext.Users.ToListAsync();
-        //     return Ok(users);
-        // }
+        [HttpGet("me")]
+        public async Task<ActionResult<APIMeResponse>> GetMe()
+        {
+            // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            // return Ok(new { userId });
+            var user = await _userManager.GetUserAsync(User);
+            return user != null ? Ok(new APIMeResponse(user)) : NotFound("NotFound");
+        }
+
+        [HttpGet("users")]
+        // [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            return Ok(users);
+        }
 
         // [HttpGet("{id}")]
         // public async Task<ActionResult<User>> GetUserById(int id)
