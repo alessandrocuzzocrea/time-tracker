@@ -16,8 +16,20 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     {
         optionsBuilder.UseSqlite("Data Source=mydatabase.db");
     }
-}
 
-public class ApplicationUser : IdentityUser<int>
-{
+    public override int SaveChanges()
+    {
+        foreach (var entry in ChangeTracker.Entries()
+            .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
+        {
+            entry.Property("UpdatedAt").CurrentValue = DateTime.UtcNow;
+
+            if (entry.State == EntityState.Added)
+            {
+                entry.Property("CreatedAt").CurrentValue = DateTime.UtcNow;
+            }
+        }
+
+        return base.SaveChanges();
+    }
 }
