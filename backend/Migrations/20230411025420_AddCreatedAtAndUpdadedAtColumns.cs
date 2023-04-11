@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TimeTracker.Migrations
 {
     /// <inheritdoc />
-    public partial class test : Migration
+    public partial class AddCreatedAtAndUpdadedAtColumns : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

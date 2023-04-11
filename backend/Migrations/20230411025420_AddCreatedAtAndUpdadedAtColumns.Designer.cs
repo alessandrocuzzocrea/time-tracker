@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TimeTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230411025420_test")]
-    partial class test
+    [Migration("20230411025420_AddCreatedAtAndUpdadedAtColumns")]
+    partial class AddCreatedAtAndUpdadedAtColumns
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
