@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TimeTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
