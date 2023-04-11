@@ -12,24 +12,48 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=mydatabase.db");
-    }
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder.UseSqlite("Data Source=mydatabase.db");
+    // }
 
-    public override int SaveChanges()
+    // public override int SaveChanges()
+    // {
+    //     foreach (var entry in ChangeTracker.Entries()
+    //         .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
+    //     {
+    //         entry.Property("UpdatedAt").CurrentValue = DateTime.UtcNow;
+
+    //         if (entry.State == EntityState.Added)
+    //         {
+    //             entry.Property("CreatedAt").CurrentValue = DateTime.UtcNow;
+    //         }
+    //     }
+
+    //     return base.SaveChanges();
+    // }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        foreach (var entry in ChangeTracker.Entries()
-            .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
+        foreach (var entry in ChangeTracker.Entries())
         {
-            entry.Property("UpdatedAt").CurrentValue = DateTime.UtcNow;
-
-            if (entry.State == EntityState.Added)
+            if (entry.Entity is ITimestampedEntity entity)
             {
-                entry.Property("CreatedAt").CurrentValue = DateTime.UtcNow;
+                var now = DateTime.UtcNow;
+
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entity.CreatedAt = now;
+                        entity.UpdatedAt = now;
+                        break;
+                    case EntityState.Modified:
+                        entity.UpdatedAt = now;
+                        break;
+                }
             }
         }
 
-        return base.SaveChanges();
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }
