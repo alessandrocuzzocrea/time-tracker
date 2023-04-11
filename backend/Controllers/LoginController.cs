@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LoginController : ControllerBase
+public class LoginController : ApiBaseController
 {
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public LoginController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+    public LoginController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) : base(userManager)
     {
         _signInManager = signInManager;
-        _userManager = userManager;
     }
 
     [HttpPost("login")]
