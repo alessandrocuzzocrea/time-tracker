@@ -1,88 +1,75 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TimeTracker;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<MyDbContext>(options =>
-        options.UseSqlite("Data Source=mydatabase.db"));
-
-builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
-        options.UseSqlite("Data Source=mydatabase.db"));
-
-builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
-        .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
-        .AddDefaultTokenProviders();
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // Default Password settings.
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 0;
-});
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
-
-
-var CustomAllowSpecificOrigins = "CustomAllowSpecificOrigins";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "CustomAllowSpecificOrigins",
-                    policy =>
-                    {
-                        policy
-                            .AllowAnyOrigin()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-});
+ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
-app.UseCors(CustomAllowSpecificOrigins);
-
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-// app.UseHttpsRedirection();
-
-// app.UseAuthorization();
-
-// app.MapGet("/test", () =>
-// {
-//     var result = new { Items = new[] { "1", "2", "3" } };
-//     return result;
-// });
-
-// app.MapGet("/test2", () =>
-// {
-//     var result = new { Items = new[] { "1", "2", "3" } };
-//     return result;
-// });
-
-app.MapControllers();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-// app.MapRazorPages();
-app.MapDefaultControllerRoute();
+Configure(app);
 
 app.Run();
+
+static void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+
+    services.AddDbContext<MyDbContext>(options =>
+        options.UseSqlite("Data Source=mydatabase.db"));
+
+    services.AddDbContext<ApplicationIdentityDbContext>(options =>
+        options.UseSqlite("Data Source=mydatabase.db"));
+
+    services.AddIdentity<ApplicationUser, IdentityRole<int>>()
+        .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        .AddDefaultTokenProviders();
+
+    services.Configure<IdentityOptions>(options =>
+    {
+        // Default Password settings.
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredLength = 6;
+        options.Password.RequiredUniqueChars = 0;
+    });
+
+    services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie();
+
+    services.AddCors(options =>
+    {
+        options.AddPolicy(name: "CustomAllowSpecificOrigins",
+            policy =>
+            {
+                policy
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+    });
+}
+
+static void Configure(WebApplication app)
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseCors("CustomAllowSpecificOrigins");
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllers();
+    app.MapDefaultControllerRoute();
+}
