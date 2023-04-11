@@ -14,7 +14,16 @@
 			return acc;
 		}, [])
 		.reverse();
+
+	import CartItemsStore from '../stores/CartItemsStore';
+	import PlayerStore from '../stores/PlayerStore';
+
+	function handleClick() {
+		PlayerStore.set(true);
+	}
 </script>
+
+{JSON.stringify($CartItemsStore)}
 
 {#each groups as group}
 	<h2 class="font-bold">{group.date}</h2>
@@ -26,8 +35,10 @@
 			<div class="p-1">{timeEntry.startTime}</div>
 			<div class="p-1">{timeEntry.endTime}</div>
 			<div class="p-1">{timeEntry.endTime - timeEntry.startTime}</div>
-			<button class="p-1">Edit</button>
-			<button class="p-1">Play</button>
+			{#if !$PlayerStore}
+				<button class="p-1" on:click={handleClick}>Edit</button>
+				<button class="p-1" on:click={handleClick}>Play</button>
+			{/if}
 		</div>
 	{/each}
 {/each}
