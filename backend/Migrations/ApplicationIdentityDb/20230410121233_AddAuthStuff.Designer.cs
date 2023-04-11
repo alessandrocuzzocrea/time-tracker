@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace TimeTracker.Migrations.ApplicationIdentityDb
 {
-    [DbContext(typeof(ApplicationIdentityDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230410121233_AddAuthStuff")]
     partial class AddAuthStuff
     {

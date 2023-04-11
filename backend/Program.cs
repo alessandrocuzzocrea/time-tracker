@@ -20,14 +20,11 @@ static void ConfigureServices(IServiceCollection services)
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
 
-    services.AddDbContext<MyDbContext>(options =>
-        options.UseSqlite("Data Source=mydatabase.db"));
-
-    services.AddDbContext<ApplicationIdentityDbContext>(options =>
+    services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlite("Data Source=mydatabase.db"));
 
     services.AddIdentity<ApplicationUser, IdentityRole<int>>()
-        .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
     services.Configure<IdentityOptions>(options =>
