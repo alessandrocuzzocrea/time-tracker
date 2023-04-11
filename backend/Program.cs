@@ -60,9 +60,9 @@ static void Configure(WebApplication app)
     {
         app.UseSwagger();
         app.UseSwaggerUI();
-    }
 
-    app.UseCors("CustomAllowSpecificOrigins");
+        app.UseCors("CustomAllowSpecificOrigins");
+    }
 
     app.UseAuthentication();
     app.UseAuthorization();
