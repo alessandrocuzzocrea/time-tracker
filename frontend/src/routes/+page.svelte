@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    export let data: PageData;
+	// import type { PageData } from './$types';
+	// export let data: PageData;
 </script>
-  
+
 <ul>
-    {#each data.items as item}
-        <li>{item}</li>
-    {/each}
+	<!-- {#each data.items as item} -->
+	<!-- <li>{item}</li> -->
+	<!-- {/each} -->
 </ul>
