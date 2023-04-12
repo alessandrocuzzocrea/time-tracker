@@ -1,31 +1,12 @@
 <script>
-	let isPlaying = false;
-	// import PlayerStore from '../stores/PlayerStore';
+	// let isPlaying = false;
+	import PlayerStore from '../stores/PlayerStore';
 	// import { get } from 'svelte/store';
 	let elapsedTime = 0;
 	let clear;
 
-	// function handleToggleClass() {
-	// 	PlayerStore.set(!$PlayerStore);
-
-	// 	if ($PlayerStore) {
-	// 		clear = setInterval(() => (elapsedTime += 1), 1000);
-	// 	} else {
-	// 		elapsedTime = 0;
-	// 		clearInterval(clear);
-	// 	}
-	// }
-
 	function handleClick() {
-		// $PlayerStore = !$PlayerStore;
-		isPlaying = !isPlaying;
-
-		// if ($PlayerStore) {
-		// clear = setInterval(() => (elapsedTime += 1), 1000);
-		// } else {
-		// elapsedTime = 0;
-		// clearInterval(clear);
-		// }
+		$PlayerStore = !$PlayerStore;
 	}
 
 	function fu(isPlaying) {
@@ -37,14 +18,14 @@
 		}
 	}
 
-	$: fu(isPlaying);
+	$: fu($PlayerStore);
 
 	$: hours = String(Math.floor(elapsedTime / 3600)).padStart(2, '0');
 	$: minutes = String(Math.floor(elapsedTime / 60)).padStart(2, '0');
 	$: seconds = String(Math.floor(elapsedTime - Math.floor(elapsedTime / 60) * 60)).padStart(2, '0');
 
-	$: buttonLabel = isPlaying ? 'Stop' : 'Start';
-	$: buttonClass = isPlaying ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700';
+	$: buttonLabel = $PlayerStore ? 'Stop' : 'Start';
+	$: buttonClass = $PlayerStore ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700';
 </script>
 
 <div class="flex flex-row items-center p-2 justify-between bg-slate-200">

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PlayerStore from '../stores/PlayerStore';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -15,23 +16,10 @@
 		}, [])
 		.reverse();
 
-	import CartItemsStore from '../stores/CartItemsStore';
-	import PlayerStore from '../stores/PlayerStore';
-	import TimerStore from '../stores/TimerStore';
-	const timer = TimerStore({ interval: 1000 });
-
 	function handleClick() {
-		PlayerStore.set(true);
+		$PlayerStore = !$PlayerStore;
 	}
 </script>
-
-<button on:click={() => $timer.start()}>Start</button>
-<button on:click={() => $timer.stop()}>Stop</button>
-<button on:click={() => $timer.reset()}>Reset</button>
-
-<p>Time: {$timer.time} ms</p>
-
-{JSON.stringify($CartItemsStore)}
 
 {#each groups as group}
 	<h2 class="font-bold">{group.date}</h2>
