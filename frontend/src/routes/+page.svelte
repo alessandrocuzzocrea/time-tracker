@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { count } from '../stores/PlayerStore';
+	import { currentTimeEntry } from '../stores/PlayerStore';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -18,7 +18,7 @@
 
 	function handleClick() {
 		// $PlayerStore = !$PlayerStore;
-		count.toggle();
+		// .toggle();
 	}
 </script>
 
@@ -32,10 +32,10 @@
 			<div class="p-1">{timeEntry.startTime}</div>
 			<div class="p-1">{timeEntry.endTime}</div>
 			<div class="p-1">{timeEntry.endTime - timeEntry.startTime}</div>
-			{#if !$count.isPlaying}
-				<button class="p-1" on:click={handleClick}>Edit</button>
-				<button class="p-1" on:click={handleClick}>Play</button>
-			{/if}
+			<!-- {#if currentTimeEntry?.id === false} -->
+			<!-- <button class="p-1" on:click={handleClick}>Edit</button> -->
+			<!-- <button class="p-1" on:click={handleClick}>Play</button> -->
+			<!-- {/if} -->
 		</div>
 	{/each}
 {/each}
