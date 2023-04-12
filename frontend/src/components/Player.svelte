@@ -1,9 +1,16 @@
 <script>
-	import { currentTimeEntry, startTimeEntry, stopTimeEntry } from '../stores/PlayerStore';
+	import {
+		currentTimeEntry,
+		loadCurrentTimeEntry,
+		startTimeEntry,
+		stopTimeEntry
+	} from '../stores/PlayerStore';
 	let startTime = new Date();
 	let endTime = new Date();
 	let duration = 0;
 	let clear;
+
+	const promise = loadCurrentTimeEntry();
 
 	function handleClick() {
 		if ($currentTimeEntry.id) {
@@ -39,22 +46,27 @@
 </script>
 
 <div class="flex flex-row items-center p-2 justify-between bg-slate-200">
-	<input
-		type="text"
-		class="flex flex-1 border rounded px-2 py-1 mr-2 p-1"
-		placeholder="What are you doing?"
-	/>
-	<select class="p-1 mr-2">
-		<option>Task A</option>
-		<option>Task B</option>
-		<option>Maybe</option>
-	</select>
-	<p class="mr-2">Project A</p>
-	<p class="mr-2">|</p>
-	<!-- {#if $currentTimeEntry?.id === true} -->
-	<p class="mr-2">{hours}:{minutes}:{seconds}</p>
-	<!-- {/if} -->
-	<button on:click={handleClick} class={`${buttonClass} text-white font-bold py-2 px-4 rounded p-1`}
-		>{buttonLabel}</button
-	>
+	{#await promise}
+		<p>⏳</p>
+	{:then}
+		<input
+			type="text"
+			class="flex flex-1 border rounded px-2 py-1 mr-2 p-1"
+			placeholder="What are you doing?"
+		/>
+		<select class="p-1 mr-2">
+			<option>Task A</option>
+			<option>Task B</option>
+			<option>Maybe</option>
+		</select>
+		<p class="mr-2">Project A</p>
+		<p class="mr-2">|</p>
+		<p class="mr-2">{hours}:{minutes}:{seconds}</p>
+		<button
+			on:click={handleClick}
+			class={`${buttonClass} text-white font-bold py-2 px-4 rounded p-1`}>{buttonLabel}</button
+		>
+	{:catch error}
+		<p style="color: red">{error.message}</p>
+	{/await}
 </div>

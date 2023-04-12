@@ -4,7 +4,7 @@ import { get } from 'svelte/store';
 export let currentTimeEntry = writable({})
 
 export const loadCurrentTimeEntry = async () => {
-    fetch('http://localhost:5000/timeentry/current')
+    return fetch('http://localhost:5000/timeentry/current')
         .then(res => res.json())
         .then(data => currentTimeEntry.set(data));
     // currentTimeEntry.set({
@@ -16,7 +16,6 @@ export const loadCurrentTimeEntry = async () => {
     // })
 }
 
-loadCurrentTimeEntry();
 
 export const startTimeEntry = async (taskId, description) => {
     console.log('start');
