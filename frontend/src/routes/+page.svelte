@@ -17,11 +17,19 @@
 
 	import CartItemsStore from '../stores/CartItemsStore';
 	import PlayerStore from '../stores/PlayerStore';
+	import TimerStore from '../stores/TimerStore';
+	const timer = TimerStore({ interval: 1000 });
 
 	function handleClick() {
 		PlayerStore.set(true);
 	}
 </script>
+
+<button on:click={() => $timer.start()}>Start</button>
+<button on:click={() => $timer.stop()}>Stop</button>
+<button on:click={() => $timer.reset()}>Reset</button>
+
+<p>Time: {$timer.time} ms</p>
 
 {JSON.stringify($CartItemsStore)}
 
