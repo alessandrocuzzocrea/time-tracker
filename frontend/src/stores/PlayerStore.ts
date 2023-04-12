@@ -1,5 +1,19 @@
 import { writable } from 'svelte/store';
 
-const PlayerStore = writable(false);
+function createCount() {
+    const { subscribe, set, update } = writable({
+        isPlaying: false,
+        taskId: 1,
+    });
 
-export default PlayerStore;
+    return {
+        subscribe,
+        // startStop: () => {update(n => ({ ...n, isPlaying: true }))},
+        // stop: () => update(n => ({ ...n, isPlaying: false })),
+        toggle: () => {
+            update(n => ({ ...n, isPlaying: !n.isPlaying }))
+        }
+    };
+}
+
+export const count = createCount();
