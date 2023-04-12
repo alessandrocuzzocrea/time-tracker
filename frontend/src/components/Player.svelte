@@ -1,6 +1,7 @@
 <script>
 	// let isPlaying = false;
 	import PlayerStore from '../stores/PlayerStore';
+	import { get } from 'svelte/store';
 	let elapsedTime = 0;
 	let clear;
 
@@ -16,11 +17,7 @@
 	// }
 
 	function handleClick() {
-		PlayerStore.set(!$PlayerStore);
-	}
-
-	$: {
-		// PlayerStore.set(!$PlayerStore);
+		$PlayerStore = !$PlayerStore;
 
 		if ($PlayerStore) {
 			clear = setInterval(() => (elapsedTime += 1), 1000);
@@ -28,6 +25,11 @@
 			elapsedTime = 0;
 			clearInterval(clear);
 		}
+	}
+
+	$: console.log($PlayerStore);
+	$: {
+		// PlayerStore.set(!$PlayerStore);
 	}
 
 	$: hours = String(Math.floor(elapsedTime / 3600)).padStart(2, '0');
