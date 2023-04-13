@@ -1,10 +1,228 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    export let data: PageData;
+	import { TimeEntriesStore, TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
+	import { formatDuration } from '$lib/helpers/FormatDuration';
+	import { fade } from 'svelte/transition';
+
+	function handleClick() {}
 </script>
-  
-<ul>
-    {#each data.items as item}
-        <li>{item}</li>
-    {/each}
-</ul>
+
+<!-- <button
+	on:click={handleClick()}
+	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
+> -->
+
+{#each $TimeEntriesStoreByDay as { date, entries } (date)}
+	<h2 class="font-bold" transition:fade|local>{date}</h2>
+	{#each entries as { id, projectName, taskName, description, startTime, endTime } (id)}
+		<div class="flex flex-row" transition:fade|local>
+			<div class="p-1">{projectName}</div>
+			<div class="p-1">{taskName}</div>
+			<div class="p-1">{description}</div>
+			<div class="p-1">
+				{startTime.toLocaleTimeString('en-US', {
+					hour12: false,
+					hour: 'numeric',
+					minute: 'numeric'
+				})}
+			</div>
+			<div>–</div>
+			<div class="p-1">
+				{endTime.toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' })}
+			</div>
+			<div class="p-1">{formatDuration(startTime, endTime)}</div>
+			<!-- {#if currentTimeEntry?.id === false} -->
+			<!-- <button class="p-1" on:click={handleClick}>Edit</button> -->
+			<!-- <button class="p-1" on:click={handleClick}>Play</button> -->
+			<!-- {/if} -->
+		</div>
+	{/each}
+{/each}
+
+<img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/>
+<img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/><img
+	src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+	alt=""
+/>
