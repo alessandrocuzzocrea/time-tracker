@@ -2,7 +2,7 @@
 	import avatar1 from '$lib/assets/1.jpg';
 </script>
 
-<header class="bg-white text-gray-800 py-4">
+<div class="bg-white text-gray-800">
 	<div class="container mx-auto flex justify-between items-center px-4">
 		<div class="flex items-center flex-grow">
 			<form class="w-full">
@@ -77,4 +77,4 @@
 			</div>
 		</div>
 	</div>
-</header>
+</div>

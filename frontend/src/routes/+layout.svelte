@@ -12,7 +12,8 @@
 				<h1 class="text-2xl font-semibold mb-2">TimeTracker</h1>
 			</div>
 			<nav>
-				<ul class="space-y-2">
+				<p class="text-xs mb-2">TRACK</p>
+				<ul class="space-y-2 mb-10">
 					<li>
 						<a
 							href="/"
@@ -23,20 +24,39 @@
 					</li>
 					<li>
 						<a
-							href="#"
+							href="/explore"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<span>For You</span>
+							<span>Explore</span>
 						</a>
 					</li>
 					<li>
 						<a
-							href="#"
+							href="/feed"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<span>Browse</span>
+							<span>Feed</span>
 						</a>
 					</li>
+					<li>
+						<a
+							href="/history"
+							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
+						>
+							<span>History</span>
+						</a>
+					</li>
+					<li>
+						<a
+							href="/report"
+							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
+						>
+							<span>Report</span>
+						</a>
+					</li>
+				</ul>
+				<p class="text-xs mb-2">PROJECTS</p>
+				<ul class="space-y-2">
 					<li>
 						<a
 							href="#"
