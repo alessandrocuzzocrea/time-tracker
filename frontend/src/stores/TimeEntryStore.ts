@@ -1,5 +1,4 @@
-import { writable } from 'svelte/store';
-import { get } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 
 type TimeEntry = {
     id: number;
@@ -111,7 +110,24 @@ const timeEntries: TimeEntry[] = [
 
 // debugger;
 
-export let TimeEntriesStore = writable(timeEntries);
+export const TimeEntriesStore = writable(timeEntries);
+
+// document.TimeEntriesStoreDebug = TimeEntriesStore;
+
+export const TimeEntriesStoreByDay = derived(TimeEntriesStore, $TimeEntriesStore => {
+    return $TimeEntriesStore
+        .reduce((acc, entry) => {
+            const date = new Date(entry.startTime).toLocaleDateString();
+            const group = acc.find((g) => g.date === date);
+            if (group) {
+                group.entries.push(entry);
+            } else {
+                acc.push({ date, entries: [entry] });
+            }
+            return acc;
+        }, [])
+        .reverse();
+});
 
 // export const loadCurrentTimeEntry = async () => {
 //     return fetch('http://localhost:5000/timeentry/current')
