@@ -1,5 +1,5 @@
 <script>
-	import SidePanel from '../../components/SidePanel.svelte';
+	import SidePanel from '../../lib/components/SidePanel.svelte';
 </script>
 
 <h1>Test Page</h1>
