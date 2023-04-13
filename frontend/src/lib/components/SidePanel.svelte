@@ -12,14 +12,15 @@
 		<div class="absolute inset-0 overflow-hidden">
 			<div class="absolute inset-y-0 right-0 mt-0 flex max-w-full pl-10">
 				<div class="my-auto h-full w-screen max-w-2xl">
+					<!-- CONTENT -->
 					<div
 						bind:clientWidth={width}
 						transition:fly={{ x: width }}
-						class="m-auto flex h-[100%] flex-col overflow-y-scroll bg-white py-6 shadow-xl"
+						class="m-auto flex h-[100%] flex-col overflow-y-scroll bg-white py-0 shadow-xl"
 					>
-						<div class="px-4 sm:px-6">
-							<div class="flex items-start justify-between">
-								<h2 class="text-lg font-medium text-gray-900">Panel title</h2>
+						<div class="px-4 sm:px-6 h-28 bg-blue-400">
+							<div class="flex items-center justify-center h-full relative">
+								<div class="text-4xl absolute bottom-0 transform translate-y-1/2">🧳</div>
 								<div class="ml-3 flex h-7 items-center">
 									<button
 										class="rounded-md bg-white font-bold text-gray-400 hover:text-gray-500"
@@ -38,6 +39,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- /CONTENT -->
 				</div>
 			</div>
 		</div>
