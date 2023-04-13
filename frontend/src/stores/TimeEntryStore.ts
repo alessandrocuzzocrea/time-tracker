@@ -160,15 +160,9 @@ export const TimeEntriesStoreCurrent = createCurrentTimeEntryStore();
 export const TimeEntriesStoreByDay = derived(TimeEntriesStore, $TimeEntriesStore => {
     return $TimeEntriesStore
         .reduce((acc, entry) => {
-            console.log('reduce');
-            // debugger;
             const date = new Date(entry.startTime).toLocaleDateString();
-            const group = acc.find((g) => g.date === date);
-            if (group) {
-                group.entries.push(entry);
-            } else {
-                acc.push({ date, entries: [entry] });
-            }
+            const group = acc.find(g => g.date === date);
+            group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
             return acc;
         }, [])
         .map(group => {

@@ -10,7 +10,7 @@
 	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
 > -->
 
-{#each $TimeEntriesStoreByDay as { date, entries } (date)}
+{#each $TimeEntriesStoreByDay as { date, entries }}
 	<h2 class="font-bold">{date}</h2>
 	{#each entries as { projectName, taskName, description, startTime, endTime }}
 		<div class="flex flex-row">
