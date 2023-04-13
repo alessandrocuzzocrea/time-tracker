@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { currentTimeEntry } from '../stores/PlayerStore';
-	import type { PageData } from './$types';
-	export let data: PageData;
+	// import { currentTimeEntry } from '../stores/PlayerStore';
+	import { TimeEntriesStore } from '../stores/TimeEntryStore';
+	// import type { PageData } from './$types';
+	// export let data: PageData;
 
-	const groups = data.timeEntries
+	const groups = $TimeEntriesStore
 		.reduce((acc, entry) => {
 			const date = new Date(entry.startTime).toLocaleDateString();
 			const group = acc.find((g) => g.date === date);
@@ -24,14 +25,14 @@
 
 {#each groups as group}
 	<h2 class="font-bold">{group.date}</h2>
-	{#each group.entries as timeEntry}
+	{#each group.entries as { projectName, taskName, description, startTime, endTime }}
 		<div class="flex flex-row">
-			<div class="p-1">{timeEntry.projectName}</div>
-			<div class="p-1">{timeEntry.taskName}</div>
-			<div class="p-1">{timeEntry.description}</div>
-			<div class="p-1">{timeEntry.startTime}</div>
-			<div class="p-1">{timeEntry.endTime}</div>
-			<div class="p-1">{timeEntry.endTime - timeEntry.startTime}</div>
+			<div class="p-1">{projectName}</div>
+			<div class="p-1">{taskName}</div>
+			<div class="p-1">{description}</div>
+			<div class="p-1">{startTime}</div>
+			<div class="p-1">{endTime}</div>
+			<div class="p-1">{endTime - startTime}</div>
 			<!-- {#if currentTimeEntry?.id === false} -->
 			<!-- <button class="p-1" on:click={handleClick}>Edit</button> -->
 			<!-- <button class="p-1" on:click={handleClick}>Play</button> -->
