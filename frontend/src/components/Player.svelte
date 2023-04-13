@@ -12,7 +12,7 @@
 			TimeEntriesStoreCurrent.set(null);
 		} else {
 			TimeEntriesStoreCurrent.set({
-				id: 8,
+				id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
 				taskId: 1,
 				userId: 1,
 				projectId: 1,

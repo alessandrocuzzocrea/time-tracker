@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { TimeEntriesStore, TimeEntriesStoreByDay } from '../stores/TimeEntryStore';
 	import { formatDuration } from '../helpers/FormatDuration';
+	import { fade } from 'svelte/transition';
 
 	function handleClick() {}
 </script>
@@ -10,10 +11,10 @@
 	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
 > -->
 
-{#each $TimeEntriesStoreByDay as { date, entries }}
-	<h2 class="font-bold">{date}</h2>
-	{#each entries as { projectName, taskName, description, startTime, endTime }}
-		<div class="flex flex-row">
+{#each $TimeEntriesStoreByDay as { date, entries } (date)}
+	<h2 class="font-bold" transition:fade>{date}</h2>
+	{#each entries as { id, projectName, taskName, description, startTime, endTime } (id)}
+		<div class="flex flex-row" transition:fade>
 			<div class="p-1">{projectName}</div>
 			<div class="p-1">{taskName}</div>
 			<div class="p-1">{description}</div>
