@@ -1,6 +1,6 @@
 <script>
-	import { TimeEntriesStore, TimeEntriesStoreCurrent } from '../../stores/TimeEntryStore';
-	import { formatDuration } from '../../helpers/FormatDuration';
+	import { TimeEntriesStore, TimeEntriesStoreCurrent } from '../stores/TimeEntryStore';
+	import { formatDuration } from '../helpers/FormatDuration';
 	let startTime = new Date();
 	let endTime = new Date();
 	let duration = 0;
