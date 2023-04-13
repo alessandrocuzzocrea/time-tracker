@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import Player from '../components/Player.svelte';
+	import Header from '../components/Header.svelte';
 </script>
 
 <body class="bg-gray-200">
@@ -58,7 +59,7 @@
 		<!-- Content -->
 		<div class="main flex-1 flex-col bg-white">
 			<div class="header">
-				<Player />
+				<Header />
 			</div>
 			<div class="content p-4">
 				<slot />
