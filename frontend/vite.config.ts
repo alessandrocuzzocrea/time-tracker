@@ -8,6 +8,8 @@ export default defineConfig({
 		minify: false,
 	},
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
+		include: ['src/**/*.{test,spec}.{js,ts}'],
+		globals: true,
+		environment: 'jsdom',
 	}
 });

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { TimeEntriesStore, TimeEntriesStoreByDay } from '../lib/stores/TimeEntryStore';
-	import { formatDuration } from '../lib/helpers/FormatDuration';
+	import { TimeEntriesStore, TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
+	import { formatDuration } from '$lib/helpers/FormatDuration';
 	import { fade } from 'svelte/transition';
 
 	function handleClick() {}

@@ -1,9 +1,9 @@
 <script>
 	import '../app.css';
 	import { GlobeAlt, CheckCircle, Rss, CalendarDays, ChartPie, Folder } from 'svelte-heros';
-	import Player from '../lib/components/Player.svelte';
-	import Header from '../lib/components/Header.svelte';
-	import SidePanel from '../lib/components/SidePanel.svelte';
+	import Player from '$lib/components/Player.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import SidePanel from '$lib/components/SidePanel.svelte';
 
 	import { fly, fade } from 'svelte/transition';
 	let showSidePanel, width;
