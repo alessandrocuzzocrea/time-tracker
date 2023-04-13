@@ -1,5 +1,6 @@
 <script>
 	import { TimeEntriesStore, TimeEntriesStoreCurrent } from '../stores/TimeEntryStore';
+	import { formatDuration } from '../helpers/FormatDuration';
 	let startTime = new Date();
 	let endTime = new Date();
 	let duration = 0;
@@ -51,7 +52,7 @@
 		: 'bg-blue-500 hover:bg-blue-700';
 </script>
 
-<div class="flex flex-row items-center p-2 justify-between bg-slate-200">
+<div class="flex flex-row items-center p-4 justify-between bg-slate-200">
 	{#await $TimeEntriesStoreCurrent}
 		<p>⏳</p>
 	{:then}
@@ -67,7 +68,7 @@
 		</select>
 		<p class="mr-2">Project A</p>
 		<p class="mr-2">|</p>
-		<p class="mr-2">{hours}:{minutes}:{seconds}</p>
+		<p class="mr-2">{formatDuration(startTime, endTime)}</p>
 		<button
 			on:click={handleClick}
 			class={`${buttonClass} text-white font-bold py-2 px-4 rounded p-1`}>{buttonLabel}</button

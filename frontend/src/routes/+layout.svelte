@@ -17,7 +17,6 @@
 							href="/"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<!-- <span class="material-icons">dashboard</span> -->
 							<span>Home</span>
 						</a>
 					</li>
@@ -26,7 +25,6 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<!-- <span class="material-icons">dashboard</span> -->
 							<span>For You</span>
 						</a>
 					</li>
@@ -35,7 +33,6 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<!-- <span class="material-icons">inbox</span> -->
 							<span>Browse</span>
 						</a>
 					</li>
@@ -44,7 +41,6 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<!-- <span class="material-icons">people</span> -->
 							<span>Project 1</span>
 						</a>
 					</li>
@@ -53,7 +49,6 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<!-- <span class="material-icons">settings</span> -->
 							<span>Project 2</span>
 						</a>
 					</li>
@@ -61,11 +56,32 @@
 			</nav>
 		</div>
 		<!-- Content -->
-		<div class="flex-1 flex-col bg-white">
-			<Player />
-			<div class="p-4">
+		<div class="main flex-1 flex-col bg-white">
+			<div class="content p-4">
 				<slot />
+			</div>
+			<div class="player">
+				<Player />
 			</div>
 		</div>
 	</div>
 </body>
+
+<style>
+	.main {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	.content {
+		flex: 1;
+	}
+
+	.player {
+		position: sticky;
+		bottom: 0;
+		z-index: 1;
+	}
+</style>

@@ -24,10 +24,10 @@ function createTimeEntriesStore() {
             "taskId": 1,
             "taskName": "Backend",
             "description": "Working on backend",
-            "startTime": new Date("2022-04-19T10:00:00"),
-            "endTime": new Date("2022-04-19T12:00:00"),
-            "createdAt": new Date("2022-04-19T10:00:00"),
-            "updatedAt": new Date("2022-04-19T12:00:00")
+            "startTime": new Date("2022-06-19T10:00:00"),
+            "endTime": new Date("2022-06-19T12:00:00"),
+            "createdAt": new Date("2022-06-19T10:00:00"),
+            "updatedAt": new Date("2022-06-19T12:00:00")
         },
         {
             "id": 2,
@@ -37,10 +37,10 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Working on frontend",
-            "startTime": new Date("2022-04-19T13:00:00"),
-            "endTime": new Date("2022-04-19T15:00:00"),
-            "createdAt": new Date("2022-04-19T13:00:00"),
-            "updatedAt": new Date("2022-04-19T15:00:00")
+            "startTime": new Date("2022-03-19T13:00:00"),
+            "endTime": new Date("2022-03-19T15:00:00"),
+            "createdAt": new Date("2022-03-19T13:00:00"),
+            "updatedAt": new Date("2022-03-19T15:00:00")
         },
         {
             "id": 3,
@@ -50,10 +50,10 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Debugging backend code",
-            "startTime": new Date("2022-04-20T09:00:00"),
-            "endTime": new Date("2022-04-20T12:00:00"),
-            "createdAt": new Date("2022-04-20T09:00:00"),
-            "updatedAt": new Date("2022-04-20T12:00:00")
+            "startTime": new Date("2022-03-20T09:00:00"),
+            "endTime": new Date("2022-03-20T12:00:00"),
+            "createdAt": new Date("2022-03-20T09:00:00"),
+            "updatedAt": new Date("2022-03-20T12:00:00")
         },
         {
             "id": 4,
@@ -63,10 +63,10 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Meeting with clients",
-            "startTime": new Date("2022-04-20T14:00:00"),
-            "endTime": new Date("2022-04-20T16:00:00"),
-            "createdAt": new Date("2022-04-20T14:00:00"),
-            "updatedAt": new Date("2022-04-20T16:00:00")
+            "startTime": new Date("2022-03-20T14:00:00"),
+            "endTime": new Date("2022-03-20T16:00:00"),
+            "createdAt": new Date("2022-03-20T14:00:00"),
+            "updatedAt": new Date("2022-03-20T16:00:00")
         },
         {
             "id": 5,
@@ -76,10 +76,10 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Testing new feature",
-            "startTime": new Date("2022-04-21T11:00:00"),
-            "endTime": new Date("2022-04-21T13:00:00"),
-            "createdAt": new Date("2022-04-21T11:00:00"),
-            "updatedAt": new Date("2022-04-21T13:00:00")
+            "startTime": new Date("2022-03-21T11:00:00"),
+            "endTime": new Date("2022-03-21T13:00:00"),
+            "createdAt": new Date("2022-03-21T11:00:00"),
+            "updatedAt": new Date("2022-03-21T13:00:00")
         },
         {
             "id": 6,
@@ -89,10 +89,10 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Debugging test results",
-            "startTime": new Date("2022-04-21T14:00:00"),
-            "endTime": new Date("2022-04-21T16:00:00"),
-            "createdAt": new Date("2022-04-21T14:00:00"),
-            "updatedAt": new Date("2022-04-21T16:00:00")
+            "startTime": new Date("2022-03-21T14:00:00"),
+            "endTime": new Date("2022-03-21T16:00:00"),
+            "createdAt": new Date("2022-03-21T14:00:00"),
+            "updatedAt": new Date("2022-03-21T16:00:00")
         },
         {
             "id": 7,
@@ -102,10 +102,23 @@ function createTimeEntriesStore() {
             "projectName": "Project 1",
             "taskName": "Backend",
             "description": "Planning next sprint",
-            "startTime": new Date("2022-04-22T10:00:00"),
-            "endTime": new Date("2022-04-22T12:00:00"),
-            "createdAt": new Date("2022-04-22T10:00:00"),
-            "updatedAt": new Date("2022-04-22T12:00:00")
+            "startTime": new Date("2022-03-22T10:00:00"),
+            "endTime": new Date("2022-03-22T12:00:00"),
+            "createdAt": new Date("2022-03-22T10:00:00"),
+            "updatedAt": new Date("2022-03-22T12:00:00")
+        },
+        {
+            "id": 90,
+            "taskId": 1,
+            "userId": 1,
+            "projectId": 1,
+            "projectName": "Project 1",
+            "taskName": "Backend",
+            "description": "Planning next sprint",
+            "startTime": new Date("2022-05-22T10:00:00"),
+            "endTime": new Date("2022-05-22T12:00:00"),
+            "createdAt": new Date("2022-05-22T10:00:00"),
+            "updatedAt": new Date("2022-05-22T12:00:00")
         }
     ];
 
@@ -115,18 +128,18 @@ function createTimeEntriesStore() {
     return {
         subscribe,
         add: (newEntry) => update((e) => [...e, newEntry]),
-        startStop: (entryId) => {
-            if (entryId === null || entryId === undefined) {
-                const prevEntry = $store[$store.length - 1];
-                startTime = Date.now();
-                endTime = Date.now();
-                clear = setInterval(() => (endTime = Date.now()), 1000);
-            } else {
-                startTime = new Date();
-                endTime = new Date();
-                clearInterval(clear);
-            }
-        }
+        // startStop: (entryId) => {
+        //     if (entryId === null || entryId === undefined) {
+        //         const prevEntry = $store[$store.length - 1];
+        //         startTime = Date.now();
+        //         endTime = Date.now();
+        //         clear = setInterval(() => (endTime = Date.now()), 1000);
+        //     } else {
+        //         startTime = new Date();
+        //         endTime = new Date();
+        //         clearInterval(clear);
+        //     }
+        // }
     }
 }
 
@@ -160,5 +173,6 @@ export const TimeEntriesStoreByDay = derived(TimeEntriesStore, $TimeEntriesStore
             group.entries.sort((a, b) => new Date(b.startTime) - new Date(a.startTime));
             return group;
         })
-        .reverse();
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 });
+
