@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import { GlobeAlt, CheckCircle, Rss, CalendarDays, ChartPie, Folder } from 'svelte-heros';
 	import Player from '../components/Player.svelte';
 	import Header from '../components/Header.svelte';
 </script>
@@ -19,7 +20,8 @@
 							href="/"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
-							<span>Home</span>
+							<CheckCircle />
+							<span>Overview</span>
 						</a>
 					</li>
 					<li>
@@ -27,6 +29,8 @@
 							href="/explore"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<GlobeAlt />
+
 							<span>Explore</span>
 						</a>
 					</li>
@@ -35,6 +39,7 @@
 							href="/feed"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<Rss />
 							<span>Feed</span>
 						</a>
 					</li>
@@ -43,6 +48,7 @@
 							href="/history"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<CalendarDays />
 							<span>History</span>
 						</a>
 					</li>
@@ -51,6 +57,7 @@
 							href="/report"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<ChartPie />
 							<span>Report</span>
 						</a>
 					</li>
@@ -62,6 +69,7 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<Folder />
 							<span>Project 1</span>
 						</a>
 					</li>
@@ -70,6 +78,7 @@
 							href="#"
 							class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors"
 						>
+							<Folder />
 							<span>Project 2</span>
 						</a>
 					</li>
