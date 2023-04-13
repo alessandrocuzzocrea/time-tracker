@@ -1,27 +1,33 @@
 <script>
-	import {
-		currentTimeEntry,
-		loadCurrentTimeEntry,
-		startTimeEntry,
-		stopTimeEntry
-	} from '../stores/PlayerStore';
+	import { TimeEntriesStore, TimeEntriesStoreCurrent } from '../stores/TimeEntryStore';
 	let startTime = new Date();
 	let endTime = new Date();
 	let duration = 0;
 	let clear;
 
-	const promise = loadCurrentTimeEntry();
-
 	function handleClick() {
-		if ($currentTimeEntry.id) {
-			stopTimeEntry(1);
+		if ($TimeEntriesStoreCurrent) {
+			TimeEntriesStore.add({ ...$TimeEntriesStoreCurrent, endTime: new Date() });
+			TimeEntriesStoreCurrent.set(null);
 		} else {
-			startTimeEntry(1, 'desc');
+			TimeEntriesStoreCurrent.set({
+				id: 8,
+				taskId: 1,
+				userId: 1,
+				projectId: 1,
+				projectName: 'Project 1',
+				taskName: 'Backend',
+				description: 'Current desc',
+				startTime: startTime,
+				endTime: endTime,
+				createdAt: startTime,
+				updatedAt: new Date('2022-05-22T12:00:00')
+			});
 		}
 	}
 
-	function fu(isPlaying) {
-		if (isPlaying.id) {
+	function fu(currentTimeEntry) {
+		if (currentTimeEntry) {
 			startTime = Date.now();
 			endTime = Date.now();
 			clear = setInterval(() => (endTime = Date.now()), 1000);
@@ -32,27 +38,27 @@
 		}
 	}
 
-	$: fu($currentTimeEntry);
+	$: fu($TimeEntriesStoreCurrent);
 	$: duration = endTime - startTime;
 
 	$: hours = String(Math.floor(duration / 3600000)).padStart(2, '0');
 	$: minutes = String(Math.floor(duration / 60000) % 60).padStart(2, '0');
 	$: seconds = String(Math.floor(duration / 1000) % 60).padStart(2, '0');
 
-	$: buttonLabel = $currentTimeEntry?.id ? 'Stop' : 'Start';
-	$: buttonClass = $currentTimeEntry?.id
+	$: buttonLabel = $TimeEntriesStoreCurrent ? 'Stop' : 'Start';
+	$: buttonClass = $TimeEntriesStoreCurrent
 		? 'bg-red-500 hover:bg-red-700'
 		: 'bg-blue-500 hover:bg-blue-700';
 </script>
 
 <div class="flex flex-row items-center p-2 justify-between bg-slate-200">
-	{#await promise}
+	{#await $TimeEntriesStoreCurrent}
 		<p>⏳</p>
 	{:then}
 		<input
 			type="text"
 			class="flex flex-1 border rounded px-2 py-1 mr-2 p-1"
-			placeholder="What are you doing?"
+			placeholder={$TimeEntriesStoreCurrent?.description}
 		/>
 		<select class="p-1 mr-2">
 			<option>Task A</option>

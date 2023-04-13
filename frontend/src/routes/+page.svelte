@@ -1,28 +1,15 @@
 <script lang="ts">
 	import { TimeEntriesStore, TimeEntriesStoreByDay } from '../stores/TimeEntryStore';
-
-	// const groups = $TimeEntriesStore
-	// 	.reduce((acc, entry) => {
-	// 		const date = new Date(entry.startTime).toLocaleDateString();
-	// 		const group = acc.find((g) => g.date === date);
-	// 		if (group) {
-	// 			group.entries.push(entry);
-	// 		} else {
-	// 			acc.push({ date, entries: [entry] });
-	// 		}
-	// 		return acc;
-	// 	}, [])
-	// 	.reverse();
-
 	function handleClick() {
-		// $PlayerStore = !$PlayerStore;
-		// .toggle();
+		// TimeEntriesStore.StartStop();
 	}
-
-	$: TimeEntriesStoreByDay: console.log('derived changed');
 </script>
 
-<!-- <div class="">{JSON.stringify($TimeEntriesStoreByDay)}</div> -->
+<button
+	on:click={handleClick()}
+	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
+>
+
 {#each $TimeEntriesStoreByDay as { date, entries }}
 	<h2 class="font-bold">{date}</h2>
 	{#each entries as { projectName, taskName, description, startTime, endTime }}
