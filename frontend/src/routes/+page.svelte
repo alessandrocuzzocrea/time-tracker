@@ -12,9 +12,9 @@
 > -->
 
 {#each $TimeEntriesStoreByDay as { date, entries } (date)}
-	<h2 class="font-bold" transition:fade>{date}</h2>
+	<h2 class="font-bold" transition:fade|local>{date}</h2>
 	{#each entries as { id, projectName, taskName, description, startTime, endTime } (id)}
-		<div class="flex flex-row" transition:fade>
+		<div class="flex flex-row" transition:fade|local>
 			<div class="p-1">{projectName}</div>
 			<div class="p-1">{taskName}</div>
 			<div class="p-1">{description}</div>

@@ -57,6 +57,9 @@
 		</div>
 		<!-- Content -->
 		<div class="main flex-1 flex-col bg-white">
+			<div class="header">
+				<Player />
+			</div>
 			<div class="content p-4">
 				<slot />
 			</div>
@@ -73,6 +76,15 @@
 		flex-direction: column;
 		height: 100%;
 		overflow-y: auto;
+	}
+
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		background-color: #fff;
+		padding: 8px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
 	.content {
