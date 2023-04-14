@@ -16,7 +16,7 @@
 	<div class="flex flex-col">
 		<div class="flex flex-row space-x-3 mb-2">
 			<h2 class="font-bold">Assigned to me</h2>
-			<h2 class="text-xs align-text-bottom">View all -></h2>
+			<h2 class="text-xs align-text-bottom leading-8">View all →</h2>
 		</div>
 		<div class="flex flex-row space-x-8">
 			<HomeScreenTaskTile />
