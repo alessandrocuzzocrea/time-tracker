@@ -52,7 +52,7 @@
 		: 'bg-blue-500 hover:bg-blue-700';
 </script>
 
-<div class="flex flex-row items-center p-4 justify-between bg-slate-200">
+<div class="flex flex-row items-center p-4 justify-between bg-white border-t border-slate-200">
 	{#await $TimeEntriesStoreCurrent}
 		<p>⏳</p>
 	{:then}

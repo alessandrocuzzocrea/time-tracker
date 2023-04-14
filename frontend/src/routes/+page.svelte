@@ -2,6 +2,7 @@
 	import { TimeEntriesStore, TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
 	import { formatDuration } from '$lib/helpers/FormatDuration';
 	import { fade } from 'svelte/transition';
+	import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
 
 	function handleClick() {}
 </script>
@@ -10,6 +11,25 @@
 	on:click={handleClick()}
 	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
 > -->
+
+<div class="flex flex-row mb-10 space-x-8">
+	<div class="flex flex-col">
+		<div class="flex flex-row space-x-3 mb-2">
+			<h2 class="font-bold">Assigned to me</h2>
+			<h2 class="text-xs align-text-bottom">View all -></h2>
+		</div>
+		<div class="flex flex-row space-x-8">
+			<HomeScreenTaskTile />
+			<HomeScreenTaskTile />
+			<HomeScreenTaskTile />
+		</div>
+	</div>
+	<div class="flex"><h2 class="font-bold">.</h2></div>
+	<div class="flex flex-col">
+		<h2 class="font-bold">Reports</h2>
+		<div class="flex flex-row space-x-8"><HomeScreenTaskTile /></div>
+	</div>
+</div>
 
 {#each $TimeEntriesStoreByDay as { date, entries } (date)}
 	<h2 class="font-bold" transition:fade|local>{date}</h2>

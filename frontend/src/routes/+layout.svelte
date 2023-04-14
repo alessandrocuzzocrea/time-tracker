@@ -96,7 +96,7 @@
 			</nav>
 		</div>
 		<!-- Content -->
-		<div class="main flex-1 flex-col bg-white">
+		<div class="main flex-1 flex-col bg-slate-100">
 			<div class="header">
 				<Header />
 			</div>
