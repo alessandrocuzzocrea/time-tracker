@@ -17,20 +17,20 @@ type TimeEntry = {
 
 function createTimeEntriesStore() {
   const timeEntries: TimeEntry[] = [
-    {
-      id: 1,
-      userId: 1,
-      projectId: 1,
-      projectName: 'Project 1',
-      projectColor: 'red',
-      taskId: 1,
-      taskName: 'Backend',
-      description: 'Working on backend',
-      startTime: new Date('2023-06-19T10:00:00'),
-      endTime: new Date('2023-06-19T12:00:00'),
-      createdAt: new Date('2023-06-19T10:00:00'),
-      updatedAt: new Date('2023-06-19T12:00:00')
-    },
+    // {
+    //   id: 1,
+    //   userId: 1,
+    //   projectId: 1,
+    //   projectName: 'Project 1',
+    //   projectColor: 'red',
+    //   taskId: 1,
+    //   taskName: 'Backend',
+    //   description: 'Working on backend',
+    //   startTime: new Date('2023-06-19T10:00:00'),
+    //   endTime: new Date('2023-06-19T12:00:00'),
+    //   createdAt: new Date('2023-06-19T10:00:00'),
+    //   updatedAt: new Date('2023-06-19T12:00:00')
+    // },
     {
       id: 2,
       taskId: 1,
@@ -128,20 +128,77 @@ function createTimeEntriesStore() {
       endTime: new Date('2023-03-22T12:00:00'),
       createdAt: new Date('2023-03-22T10:00:00'),
       updatedAt: new Date('2023-03-22T12:00:00')
+    },
+    {
+      id: 9,
+      taskId: 1,
+      userId: 1,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: 'red',
+      taskName: 'Backend',
+      description: 'Planning next sprint',
+      startTime: new Date('2023-04-05T10:00:00'),
+      endTime: new Date('2023-04-05T12:00:00'),
+      createdAt: new Date('2023-04-05T10:00:00'),
+      updatedAt: new Date('2023-04-05T12:00:00')
+    },
+    {
+      id: 10,
+      taskId: 1,
+      userId: 2,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: 'red',
+      taskName: 'Backend',
+      description: 'Implementing new API',
+      startTime: new Date('2023-04-05T13:00:00'),
+      endTime: new Date('2023-04-05T15:00:00'),
+      createdAt: new Date('2023-04-05T13:00:00'),
+      updatedAt: new Date('2023-04-05T15:00:00')
+    },
+    {
+      id: 11,
+      taskId: 1,
+      userId: 3,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: 'red',
+      taskName: 'Backend',
+      description: 'Refactoring code',
+      startTime: new Date('2023-04-05T15:30:00'),
+      endTime: new Date('2023-04-05T17:00:00'),
+      createdAt: new Date('2023-04-05T15:30:00'),
+      updatedAt: new Date('2023-04-05T17:00:00')
+    },
+    {
+      id: 12,
+      taskId: 1,
+      userId: 4,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: 'red',
+      taskName: 'Backend',
+      description: 'Writing unit tests',
+      startTime: new Date('2023-04-05T10:00:00'),
+      endTime: new Date('2023-04-05T12:00:00'),
+      createdAt: new Date('2023-04-05T10:00:00'),
+      updatedAt: new Date('2023-04-05T12:00:00')
+    },
+    {
+      id: 13,
+      taskId: 1,
+      userId: 5,
+      projectId: 1,
+      projectName: 'Project 2',
+      projectColor: 'blue',
+      taskName: 'Backend',
+      description: 'Debugging code',
+      startTime: new Date('2023-04-05T13:30:00'),
+      endTime: new Date('2023-04-05T15:00:00'),
+      createdAt: new Date('2023-04-05T13:30:00'),
+      updatedAt: new Date('2023-04-05T15:00:00')
     }
-    // {
-    //     "id": 90,
-    //     "taskId": 1,
-    //     "userId": 1,
-    //     "projectId": 1,
-    //     "projectName": "Project 1",
-    //     "taskName": "Backend",
-    //     "description": "Planning next sprint",
-    //     "startTime": new Date("2023-05-22T10:00:00"),
-    //     "endTime": new Date("2023-05-22T12:00:00"),
-    //     "createdAt": new Date("2023-05-22T10:00:00"),
-    //     "updatedAt": new Date("2023-05-22T12:00:00")
-    // }
   ];
 
   const store = writable(timeEntries);
