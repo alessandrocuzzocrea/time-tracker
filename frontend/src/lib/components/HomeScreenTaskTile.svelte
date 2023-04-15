@@ -6,6 +6,7 @@
   export let taskPic: string;
   export let ownerName: string;
   export let ownerPic: string;
+  export let isActive: boolean;
 </script>
 
 <div class="relative flex h-48 w-64 flex-col overflow-hidden rounded-3xl bg-white shadow-xl">
@@ -29,6 +30,6 @@
   <div
     class="absolute inset-0 z-10 flex items-center justify-center text-6xl opacity-0 duration-300 hover:opacity-100"
   >
-    TEST
+    {isActive ? '||' : '|>'}
   </div>
 </div>
