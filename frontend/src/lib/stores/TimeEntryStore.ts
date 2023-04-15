@@ -160,7 +160,7 @@ export const TimeEntriesStoreCurrent = createCurrentTimeEntryStore();
 export const TimeEntriesStoreByDay = derived(TimeEntriesStore, ($TimeEntriesStore) => {
   return $TimeEntriesStore
     .reduce((acc, entry) => {
-      const date = new Date(entry.startTime).toLocaleDateString();
+      const date = new Date(entry.startTime).toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
       const group = acc.find((g) => g.date === date);
       group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
       return acc;
