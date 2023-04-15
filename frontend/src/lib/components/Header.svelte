@@ -71,8 +71,8 @@
       <div class="flex items-center">
         <img class="mr-4 h-12 rounded-full shadow-xl" src={avi1} alt="Profile" />
         <div class="mr-4">
-          <div class="font-bold">Pompompurin</div>
-          <div class="text-sm text-gray-500">Team Sanrio</div>
+          <div class="font-bold">Purin</div>
+          <div class="text-sm text-gray-500">Team ABC</div>
         </div>
       </div>
     </div>

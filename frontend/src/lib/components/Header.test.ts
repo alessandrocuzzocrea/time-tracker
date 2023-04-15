@@ -6,6 +6,6 @@ describe('Pokemon Details', () => {
   it('Should show a loading spinner when making the API Call', () => {
     const { getByText } = render(Header);
 
-    expect(() => getByText(/Pompompurin/i)).not.toThrow();
+    expect(() => getByText(/Purin/i)).not.toThrow();
   });
 });

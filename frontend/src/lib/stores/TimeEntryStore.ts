@@ -5,6 +5,7 @@ type TimeEntry = {
   userId: number;
   projectId: number;
   projectName: string;
+  projectColor: string;
   taskId: number;
   taskName: string;
   description: string;
@@ -16,25 +17,27 @@ type TimeEntry = {
 
 function createTimeEntriesStore() {
   const timeEntries: TimeEntry[] = [
-    // {
-    //     "id": 1,
-    //     "userId": 1,
-    //     "projectId": 1,
-    //     "projectName": "Project 1",
-    //     "taskId": 1,
-    //     "taskName": "Backend",
-    //     "description": "Working on backend",
-    //     "startTime": new Date("2023-06-19T10:00:00"),
-    //     "endTime": new Date("2023-06-19T12:00:00"),
-    //     "createdAt": new Date("2023-06-19T10:00:00"),
-    //     "updatedAt": new Date("2023-06-19T12:00:00")
-    // },
+    {
+      id: 1,
+      userId: 1,
+      projectId: 1,
+      projectName: "Project 1",
+      projectColor: "red",
+      taskId: 1,
+      taskName: "Backend",
+      description: "Working on backend",
+      startTime: new Date("2023-06-19T10:00:00"),
+      endTime: new Date("2023-06-19T12:00:00"),
+      createdAt: new Date("2023-06-19T10:00:00"),
+      updatedAt: new Date("2023-06-19T12:00:00")
+    },
     {
       id: 2,
       taskId: 1,
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Working on frontend',
       startTime: new Date('2023-03-19T13:00:00'),
@@ -48,6 +51,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Debugging backend code',
       startTime: new Date('2023-03-20T09:00:00'),
@@ -61,6 +65,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Meeting with clients',
       startTime: new Date('2023-03-20T14:00:00'),
@@ -73,7 +78,8 @@ function createTimeEntriesStore() {
       taskId: 1,
       userId: 1,
       projectId: 1,
-      projectName: 'Project 1',
+      projectName: "Project 1",
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Testing new feature',
       startTime: new Date('2023-03-21T11:00:00'),
@@ -87,6 +93,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Debugging test results',
       startTime: new Date('2023-03-21T14:00:00'),
@@ -100,6 +107,21 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
+      projectColor: "red",
+      taskName: 'Backend',
+      description: 'Debugging test results',
+      startTime: new Date('2023-03-21T16:30:00'),
+      endTime: new Date('2023-03-21T17:10:00'),
+      createdAt: new Date('2023-03-21T14:00:00'),
+      updatedAt: new Date('2023-03-21T16:00:00')
+    },
+    {
+      id: 8,
+      taskId: 1,
+      userId: 1,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: "red",
       taskName: 'Backend',
       description: 'Planning next sprint',
       startTime: new Date('2023-03-22T10:00:00'),
