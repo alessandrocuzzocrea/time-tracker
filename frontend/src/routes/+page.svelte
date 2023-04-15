@@ -58,8 +58,8 @@
 {#each $TimeEntriesStoreByDay as { date, entries } (date)}
   <h2 class="mb-4 font-bold" transition:fade|local>{date}</h2>
   <div class="overflow-hidden rounded-lg bg-white">
-    {#each entries as entry (entry.id)}
-      <TimeEntryRow {...entry} />
+    {#each entries as { id, projectName, taskName, description, startTime, endTime } (id)}
+      <TimeEntryRow {id} {projectName} {taskName} {description} {startTime} {endTime} />
     {/each}
   </div>
 {/each}

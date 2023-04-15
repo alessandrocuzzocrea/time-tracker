@@ -1,9 +1,6 @@
 {
   "workbench.editor.labelFormat": "short",
-  "cSpell.words": [
-    "Nagisa",
-    "Purin"
-  ],
+  "cSpell.words": ["Nagisa", "Purin"],
   "tailwindCSS.includeLanguages": {
     "html": "html",
     "javascript": "javascript",

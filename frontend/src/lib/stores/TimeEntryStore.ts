@@ -21,15 +21,15 @@ function createTimeEntriesStore() {
       id: 1,
       userId: 1,
       projectId: 1,
-      projectName: "Project 1",
-      projectColor: "red",
+      projectName: 'Project 1',
+      projectColor: 'red',
       taskId: 1,
-      taskName: "Backend",
-      description: "Working on backend",
-      startTime: new Date("2023-06-19T10:00:00"),
-      endTime: new Date("2023-06-19T12:00:00"),
-      createdAt: new Date("2023-06-19T10:00:00"),
-      updatedAt: new Date("2023-06-19T12:00:00")
+      taskName: 'Backend',
+      description: 'Working on backend',
+      startTime: new Date('2023-06-19T10:00:00'),
+      endTime: new Date('2023-06-19T12:00:00'),
+      createdAt: new Date('2023-06-19T10:00:00'),
+      updatedAt: new Date('2023-06-19T12:00:00')
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Working on frontend',
       startTime: new Date('2023-03-19T13:00:00'),
@@ -51,7 +51,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Debugging backend code',
       startTime: new Date('2023-03-20T09:00:00'),
@@ -65,7 +65,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Meeting with clients',
       startTime: new Date('2023-03-20T14:00:00'),
@@ -78,8 +78,8 @@ function createTimeEntriesStore() {
       taskId: 1,
       userId: 1,
       projectId: 1,
-      projectName: "Project 1",
-      projectColor: "red",
+      projectName: 'Project 1',
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Testing new feature',
       startTime: new Date('2023-03-21T11:00:00'),
@@ -93,7 +93,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Debugging test results',
       startTime: new Date('2023-03-21T14:00:00'),
@@ -107,7 +107,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Debugging test results',
       startTime: new Date('2023-03-21T16:30:00'),
@@ -121,7 +121,7 @@ function createTimeEntriesStore() {
       userId: 1,
       projectId: 1,
       projectName: 'Project 1',
-      projectColor: "red",
+      projectColor: 'red',
       taskName: 'Backend',
       description: 'Planning next sprint',
       startTime: new Date('2023-03-22T10:00:00'),
@@ -182,7 +182,11 @@ export const TimeEntriesStoreCurrent = createCurrentTimeEntryStore();
 export const TimeEntriesStoreByDay = derived(TimeEntriesStore, ($TimeEntriesStore) => {
   return $TimeEntriesStore
     .reduce((acc, entry) => {
-      const date = new Date(entry.startTime).toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+      const date = new Date(entry.startTime).toLocaleDateString('en-US', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short'
+      });
       const group = acc.find((g) => g.date === date);
       group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
       return acc;
