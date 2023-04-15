@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import { TimeEntriesStore, TimeEntriesStoreCurrent } from '$lib/stores/TimeEntryStore';
   import { formatDuration } from '$lib/helpers/FormatDuration';
-  let startTime = new Date();
-  let endTime = new Date();
+  let startTime: Date | null;
+  let endTime: Date | null;
   let duration = 0;
-  let clear;
+  let clear: Timer;
 
   function handleClick() {
     if ($TimeEntriesStoreCurrent) {
       TimeEntriesStore.add({ ...$TimeEntriesStoreCurrent, endTime: new Date() });
       TimeEntriesStoreCurrent.set(null);
+      startTime = endTime = null;
     } else {
       TimeEntriesStoreCurrent.set({
         id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
@@ -17,34 +18,31 @@
         userId: 1,
         projectId: 1,
         projectName: 'Project 1',
+        projectColor: 'blue',
         taskName: 'Backend',
         description: 'Current desc',
-        startTime: startTime,
-        endTime: endTime,
-        createdAt: startTime,
-        updatedAt: new Date('2022-05-22T12:00:00')
+        startTime: new Date(),
+        endTime: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
       });
     }
   }
 
-  function fu(currentTimeEntry) {
+  function updateTimer(currentTimeEntry) {
     if (currentTimeEntry) {
-      startTime = Date.now();
-      endTime = Date.now();
-      clear = setInterval(() => (endTime = Date.now()), 1000);
-    } else {
       startTime = new Date();
       endTime = new Date();
+      clear = setInterval(() => (endTime = new Date()), 1000);
+    } else {
+      // startTime = new Date();
+      // endTime = new Date();
       clearInterval(clear);
     }
   }
 
-  $: fu($TimeEntriesStoreCurrent);
+  $: updateTimer($TimeEntriesStoreCurrent);
   $: duration = endTime - startTime;
-
-  $: hours = String(Math.floor(duration / 3600000)).padStart(2, '0');
-  $: minutes = String(Math.floor(duration / 60000) % 60).padStart(2, '0');
-  $: seconds = String(Math.floor(duration / 1000) % 60).padStart(2, '0');
 
   $: buttonLabel = $TimeEntriesStoreCurrent ? 'Stop' : 'Start';
   $: buttonClass = $TimeEntriesStoreCurrent
@@ -59,16 +57,18 @@
     <input
       type="text"
       class="mr-2 flex flex-1 rounded border p-1 px-2 py-1"
-      placeholder={$TimeEntriesStoreCurrent?.description}
+      placeholder={"What's cookin'?"}
     />
-    <select class="mr-2 p-1">
+    <!-- <select class="mr-2 p-1">
       <option>Task A</option>
       <option>Task B</option>
       <option>Maybe</option>
-    </select>
-    <p class="mr-2">Project A</p>
-    <p class="mr-2">|</p>
-    <p class="mr-2">{formatDuration(startTime, endTime)}</p>
+    </select> -->
+    <!-- <p class="mr-2">Project A</p> -->
+    <!-- <p class="mr-2">|</p> -->
+    {#if startTime}
+      <p class="mr-2">{formatDuration(startTime, endTime)}</p>
+    {/if}
     <button
       on:click={handleClick}
       class={`${buttonClass} rounded p-1 px-4 py-2 font-bold text-white`}>{buttonLabel}</button
