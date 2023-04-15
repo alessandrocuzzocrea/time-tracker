@@ -48,8 +48,8 @@
 
 	$: buttonLabel = $TimeEntriesStoreCurrent ? 'Stop' : 'Start';
 	$: buttonClass = $TimeEntriesStoreCurrent
-		? 'bg-red-500 hover:bg-red-700'
-		: 'bg-blue-500 hover:bg-blue-700';
+		? 'bg-red-400 hover:bg-red-700'
+		: 'bg-blue-400 hover:bg-blue-700';
 </script>
 
 <div class="flex flex-row items-center p-4 justify-between bg-white border-t border-slate-200">

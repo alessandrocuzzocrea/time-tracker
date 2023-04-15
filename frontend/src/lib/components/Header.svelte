@@ -1,5 +1,5 @@
 <script>
-	import avatar1 from '$lib/assets/1.jpg';
+	import avi1 from '$lib/assets/avi-1.jpg';
 </script>
 
 <div class="bg-white text-gray-800">
@@ -69,7 +69,7 @@
 				/>
 			</svg>
 			<div class="flex items-center">
-				<img class="h-12 rounded-full mr-4" src={avatar1} alt="Profile" />
+				<img class="h-12 rounded-full mr-4 shadow-xl" src={avi1} alt="Profile" />
 				<div class="mr-4">
 					<div class="font-bold">Pompompurin</div>
 					<div class="text-sm text-gray-500">Team Sanrio</div>
