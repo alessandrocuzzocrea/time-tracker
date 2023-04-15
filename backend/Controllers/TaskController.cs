@@ -1,45 +1,122 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace TimeTracker.Controllers
+namespace TimeTracker
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskController : ApiBaseController
+    public class TestController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public TaskController(UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext) : base (userManager)
+        public TestController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
+        // GET: api/Test
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult<IEnumerable<Task>>> GetTasks()
         {
-            // var user = await _userManager.GetUserAsync(User);
-            // return user != null ? Ok(new MeResponse(user)) : NotFound("NotFound");
-
-            return Ok();
+          if (_context.Tasks == null)
+          {
+              return NotFound();
+          }
+            return await _context.Tasks.ToListAsync();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Post([FromBody] string name)
+        // GET: api/Test/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Task>> GetTask(int id)
         {
-            var user = await GetCurrentUser();
-            var task = new Task { Name = name, ProjectId = 1 };
+          if (_context.Tasks == null)
+          {
+              return NotFound();
+          }
+            var task = await _context.Tasks.FindAsync(id);
 
-            _dbContext.Add(task);
+            if (task == null)
+            {
+                return NotFound();
+            }
 
-            await _dbContext.SaveChangesAsync();
-            return Ok(task);
+            return task;
+        }
+
+        // PUT: api/Test/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTask(int id, Task task)
+        {
+            if (id != task.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(task).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TaskExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Test
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Task>> PostTask(Task task)
+        {
+          if (_context.Tasks == null)
+          {
+              return Problem("Entity set 'ApplicationDbContext.Tasks'  is null.");
+          }
+            _context.Tasks.Add(task);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetTask", new { id = task.Id }, task);
+        }
+
+        // DELETE: api/Test/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            if (_context.Tasks == null)
+            {
+                return NotFound();
+            }
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            _context.Tasks.Remove(task);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool TaskExists(int id)
+        {
+            return (_context.Tasks?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
