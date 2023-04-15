@@ -17,11 +17,11 @@
 	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click Me</button
 > -->
 
-<div class="flex flex-row mb-10 space-x-8">
+<div class="mb-10 flex flex-row space-x-8">
   <div class="flex flex-col">
-    <div class="flex flex-row space-x-3 mb-2">
+    <div class="mb-2 flex flex-row space-x-3">
       <h2 class="font-bold">Assigned to me</h2>
-      <h2 class="text-xs align-text-bottom leading-8">View all →</h2>
+      <h2 class="align-text-bottom text-xs leading-8">View all →</h2>
     </div>
     <div class="flex flex-row space-x-8">
       <HomeScreenTaskTile

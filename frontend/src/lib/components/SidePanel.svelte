@@ -18,9 +18,9 @@
             transition:fly={{ x: width }}
             class="m-auto flex h-[100%] flex-col overflow-y-scroll bg-white py-0 shadow-xl"
           >
-            <div class="px-4 sm:px-6 h-28 bg-blue-400">
-              <div class="flex items-center justify-center h-full relative">
-                <div class="text-4xl absolute bottom-0 transform translate-y-1/2">🧳</div>
+            <div class="h-28 bg-blue-400 px-4 sm:px-6">
+              <div class="relative flex h-full items-center justify-center">
+                <div class="absolute bottom-0 translate-y-1/2 transform text-4xl">🧳</div>
                 <div class="ml-3 flex h-7 items-center">
                   <button
                     class="rounded-md bg-white font-bold text-gray-400 hover:text-gray-500"

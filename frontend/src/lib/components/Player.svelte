@@ -52,16 +52,16 @@
     : 'bg-blue-400 hover:bg-blue-700';
 </script>
 
-<div class="flex flex-row items-center p-4 justify-between bg-white border-t border-slate-200">
+<div class="flex flex-row items-center justify-between border-t border-slate-200 bg-white p-4">
   {#await $TimeEntriesStoreCurrent}
     <p>⏳</p>
   {:then}
     <input
       type="text"
-      class="flex flex-1 border rounded px-2 py-1 mr-2 p-1"
+      class="mr-2 flex flex-1 rounded border p-1 px-2 py-1"
       placeholder={$TimeEntriesStoreCurrent?.description}
     />
-    <select class="p-1 mr-2">
+    <select class="mr-2 p-1">
       <option>Task A</option>
       <option>Task B</option>
       <option>Maybe</option>
@@ -71,7 +71,7 @@
     <p class="mr-2">{formatDuration(startTime, endTime)}</p>
     <button
       on:click={handleClick}
-      class={`${buttonClass} text-white font-bold py-2 px-4 rounded p-1`}>{buttonLabel}</button
+      class={`${buttonClass} rounded p-1 px-4 py-2 font-bold text-white`}>{buttonLabel}</button
     >
   {:catch error}
     <p style="color: red">{error.message}</p>

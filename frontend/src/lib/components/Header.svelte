@@ -3,17 +3,17 @@
 </script>
 
 <div class="bg-white text-gray-800">
-  <div class="container mx-auto flex justify-between items-center px-4">
-    <div class="flex items-center flex-grow">
+  <div class="container mx-auto flex items-center justify-between px-4">
+    <div class="flex flex-grow items-center">
       <form class="w-full">
-        <div class="flex items-center mr-16">
+        <div class="mr-16 flex items-center">
           <input
-            class="bg-gray-100 text-gray-800 border border-gray-200 py-2 px-4 rounded-l-full rounded-r-full block w-full focus:outline-none focus:ring focus:border-blue-300"
+            class="block w-full rounded-l-full rounded-r-full border border-gray-200 bg-gray-100 px-4 py-2 text-gray-800 focus:border-blue-300 focus:outline-none focus:ring"
             type="text"
             placeholder="Search..."
           />
           <svg
-            class="h-6 w-6 text-blue-400 mr-4 -ml-12"
+            class="-ml-12 mr-4 h-6 w-6 text-blue-400"
             fill="#AB7C94"
             width="800px"
             height="800px"
@@ -34,7 +34,7 @@
     </div>
     <div class="flex items-center">
       <svg
-        class="h-12 w-12 text-blue-400 mr-8 -mb-3"
+        class="-mb-3 mr-8 h-12 w-12 text-blue-400"
         fill="none"
         width="800px"
         height="800px"
@@ -69,7 +69,7 @@
         />
       </svg>
       <div class="flex items-center">
-        <img class="h-12 rounded-full mr-4 shadow-xl" src={avi1} alt="Profile" />
+        <img class="mr-4 h-12 rounded-full shadow-xl" src={avi1} alt="Profile" />
         <div class="mr-4">
           <div class="font-bold">Pompompurin</div>
           <div class="text-sm text-gray-500">Team Sanrio</div>

@@ -15,20 +15,20 @@
 <body class="bg-gray-200">
   <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="bg-electric-indigo w-48 flex flex-col p-4 text-gray-custom-1">
+    <div class="flex w-48 flex-col bg-electric-indigo p-4 text-gray-custom-1">
       <div class="mb-8">
-        <h1 class="text-2xl font-semibold mb-2">TimeTracker</h1>
+        <h1 class="mb-2 text-2xl font-semibold">TimeTracker</h1>
       </div>
       <div>
         <button class="p-3" on:click={toggleSidePanel}> Show side panel </button>
       </div>
       <nav>
-        <p class="text-xs mb-2">TRACK</p>
-        <ul class="space-y-2 mb-10">
+        <p class="mb-2 text-xs">TRACK</p>
+        <ul class="mb-10 space-y-2">
           <li class="">
             <a
               href="/"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg text-gray-custom-2 bg-highlight-menu-custom hover:bg-highlight-menu-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg bg-highlight-menu-custom px-3 py-2 text-gray-custom-2 transition-colors hover:bg-highlight-menu-custom-2"
             >
               <CheckCircle />
               <span>Overview</span>
@@ -37,7 +37,7 @@
           <li>
             <a
               href="/explore"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <GlobeAlt />
 
@@ -47,7 +47,7 @@
           <li>
             <a
               href="/feed"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <Rss />
               <span>Feed</span>
@@ -56,7 +56,7 @@
           <li>
             <a
               href="/history"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <CalendarDays />
               <span>History</span>
@@ -65,19 +65,19 @@
           <li>
             <a
               href="/report"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <ChartPie />
               <span>Report</span>
             </a>
           </li>
         </ul>
-        <p class="text-xs mb-2">PROJECTS</p>
+        <p class="mb-2 text-xs">PROJECTS</p>
         <ul class="space-y-2">
           <li>
             <a
               href="#"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <Folder />
               <span>Project 1</span>
@@ -86,7 +86,7 @@
           <li>
             <a
               href="#"
-              class="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 transition-colors"
+              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
             >
               <Folder />
               <span>Project 2</span>
