@@ -1,0 +1,16 @@
+.openapi-generator-ignore
+apis/LoginApi.ts
+apis/TestApi.ts
+apis/TimeEntryApi.ts
+apis/UserApi.ts
+apis/index.ts
+index.ts
+models/ApplicationUser.ts
+models/LoginViewModel.ts
+models/MeResponse.ts
+models/RegisterViewModel.ts
+models/Task.ts
+models/TimeEntry.ts
+models/TimeEntryCreateRequest.ts
+models/index.ts
+runtime.ts
