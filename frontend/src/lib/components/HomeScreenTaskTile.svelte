@@ -9,7 +9,9 @@
   export let isActive: boolean;
 </script>
 
-<div class="relative flex h-48 w-64 flex-col overflow-hidden rounded-3xl bg-white shadow-xl">
+<div
+  class="relative flex h-48 w-64 flex-col overflow-hidden rounded-3xl bg-white shadow-md transition duration-300 ease-in-out hover:shadow-xl"
+>
   <div class="h-10 w-64 flex-initial bg-{taskColor}-400" />
   <div class="relative flex flex-none justify-center pb-6">
     <img alt="..." src={taskPic} class="absolute -m-6 h-12 border-none align-middle" />
