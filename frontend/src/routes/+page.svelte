@@ -13,7 +13,7 @@
 <div class="mb-10 flex flex-row space-x-8">
   <div class="flex flex-col">
     <div class="mb-2 flex flex-row space-x-3">
-      <h2 class="font-bold">Assigned to me</h2>
+      <h2 class="font-bold">For you</h2>
       <h2 class="align-text-bottom text-xs leading-8">View all →</h2>
     </div>
     <div class="flex flex-row space-x-8">
@@ -58,11 +58,12 @@
 {#each $TimeEntriesStoreByDay as { date, entries } (date)}
   <h2 class="mb-4 font-bold" transition:fade|local>{date}</h2>
   <div class="mb-6 overflow-hidden rounded-lg bg-white">
-    {#each entries as { id, projectName, projectColor, taskName, description, startTime, endTime } (id)}
+    {#each entries as { id, projectName, projectColor, taskId, taskName, description, startTime, endTime } (id)}
       <TimeEntryRow
         {id}
         {projectName}
         {projectColor}
+        {taskId}
         {taskName}
         {description}
         {startTime}
