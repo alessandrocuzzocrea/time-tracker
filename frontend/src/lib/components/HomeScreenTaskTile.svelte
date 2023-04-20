@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { PauseCircle, PlayCircle } from 'svelte-heros';
+  import { TimeEntriesStoreCurrent } from '$lib/stores/TimeEntryStore';
+
   export let taskId: number;
   export let taskColor: string;
   export let projectName: string;
@@ -7,6 +10,23 @@
   export let ownerName: string;
   export let ownerPic: string;
   export let isActive: boolean;
+
+  function startTask(taskId: number) {
+    TimeEntriesStoreCurrent.set({
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+      taskId: taskId,
+      userId: 1,
+      projectId: 1,
+      projectName: 'Project 1',
+      projectColor: 'blue',
+      taskName: 'Backend',
+      description: '',
+      startTime: new Date(),
+      endTime: null,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
+  }
 </script>
 
 <div
@@ -14,8 +34,19 @@
 >
   <div class="h-10 w-64 flex-initial bg-{taskColor}-400" />
   <div class="relative flex flex-none justify-center pb-6">
+    <div
+      on:click={startTask(taskId)}
+      class="absolute inset-0 z-10 -m-6 flex h-12 items-center justify-center opacity-0 duration-300 hover:opacity-100"
+    >
+      {#if isActive}
+        <PauseCircle variation="solid" />
+      {:else}
+        <PlayCircle variation="solid" />
+      {/if}
+    </div>
     <img alt="..." src={taskPic} class="absolute -m-6 h-12 border-none align-middle" />
   </div>
+
   <p class="mx-4 w-full flex-none text-xs text-slate-700">{projectName}</p>
   <p class="mx-4 w-full flex-auto">{taskName}</p>
   <div class="mx-4 mb-2 flex flex-none flex-row">
@@ -28,10 +59,5 @@
       class="grow text-right align-baseline text-xs leading-8 text-blue-500 transition duration-300 ease-in-out hover:text-blue-900"
       href="#">Details →</a
     >
-  </div>
-  <div
-    class="absolute inset-0 z-10 flex items-center justify-center text-6xl opacity-0 duration-300 hover:opacity-100"
-  >
-    {isActive ? '||' : '|>'}
   </div>
 </div>

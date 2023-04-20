@@ -25,6 +25,7 @@
         taskPic={task3pic}
         ownerName="Nagisa"
         ownerPic={avi2}
+        isActive={false}
       />
       <HomeScreenTaskTile
         taskId={2}
@@ -34,6 +35,7 @@
         taskPic={task2pic}
         ownerName="Cinnamon"
         ownerPic={avi3}
+        isActive={false}
       />
       <HomeScreenTaskTile
         taskId={1}
@@ -43,6 +45,7 @@
         taskPic={task1pic}
         ownerName="Nagisa"
         ownerPic={avi2}
+        isActive={false}
       />
     </div>
   </div>
