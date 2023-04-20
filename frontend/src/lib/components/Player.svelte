@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TimeEntriesStore, TimeEntriesStoreCurrent } from '$lib/stores/TimeEntryStore';
+  import { TimeEntriesStore, TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { formatDuration } from '$lib/helpers/FormatDuration';
   import { slide } from 'svelte/transition';
 
@@ -10,16 +10,16 @@
   let clear: Timer;
 
   function handleClick() {
-    if ($TimeEntriesStoreCurrent) {
+    if ($TimeEntriesCurrentStore) {
       TimeEntriesStore.add({
-        ...$TimeEntriesStoreCurrent,
+        ...$TimeEntriesCurrentStore,
         description: description,
         endTime: new Date()
       });
-      TimeEntriesStoreCurrent.set(null);
+      TimeEntriesCurrentStore.set(null);
       startTime = endTime = null;
     } else {
-      TimeEntriesStoreCurrent.set({
+      TimeEntriesCurrentStore.set({
         id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         taskId: 1,
         userId: 1,
@@ -49,16 +49,16 @@
     }
   }
 
-  $: updateTimer($TimeEntriesStoreCurrent);
+  $: updateTimer($TimeEntriesCurrentStore);
   $: duration = endTime - startTime;
 
-  $: buttonLabel = $TimeEntriesStoreCurrent ? 'Stop' : 'Start';
-  $: buttonClass = $TimeEntriesStoreCurrent
+  $: buttonLabel = $TimeEntriesCurrentStore ? 'Stop' : 'Start';
+  $: buttonClass = $TimeEntriesCurrentStore
     ? 'bg-red-400 hover:bg-red-700'
     : 'bg-blue-400 hover:bg-blue-700';
 </script>
 
-{#if $TimeEntriesStoreCurrent}
+{#if $TimeEntriesCurrentStore}
   <div
     class="flex flex-row items-center justify-between border-t border-slate-200 bg-white p-4"
     transition:slide|local

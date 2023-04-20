@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TimeEntriesStoreCurrent } from '$lib/stores/TimeEntryStore';
+  import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { fade } from 'svelte/transition';
   import { formatDuration } from '$lib/helpers/FormatDuration';
   import { Play, Pause, PencilSquare } from 'svelte-heros';
@@ -15,7 +15,7 @@
 
   function start(taskId: number) {
     console.log(`start task: ${taskId}`);
-    TimeEntriesStoreCurrent.set({
+    TimeEntriesCurrentStore.set({
       id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: taskId,
       userId: 1,

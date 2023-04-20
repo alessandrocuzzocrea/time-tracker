@@ -1,6 +1,6 @@
 <script lang="ts">
   import { PauseCircle, PlayCircle } from 'svelte-heros';
-  import { TimeEntriesStoreCurrent } from '$lib/stores/TimeEntryStore';
+  import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
 
   export let taskId: number;
   export let taskColor: string;
@@ -12,7 +12,7 @@
   export let isActive: boolean;
 
   function startTask(taskId: number) {
-    TimeEntriesStoreCurrent.set({
+    TimeEntriesCurrentStore.set({
       id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: taskId,
       userId: 1,

@@ -234,7 +234,7 @@ function createCurrentTimeEntryStore() {
   };
 }
 
-export const TimeEntriesStoreCurrent = createCurrentTimeEntryStore();
+export const TimeEntriesCurrentStore = createCurrentTimeEntryStore();
 
 export const TimeEntriesStoreByDay = derived(TimeEntriesStore, ($TimeEntriesStore) => {
   return $TimeEntriesStore
