@@ -4,6 +4,7 @@
   import Player from '$lib/components/Player.svelte';
   import Header from '$lib/components/Header.svelte';
   import SidePanel from '$lib/components/SidePanel.svelte';
+  import { ProjectStore } from '$lib/stores/ProjectStore';
 
   import { fly, fade } from 'svelte/transition';
   let showSidePanel, width;
@@ -74,24 +75,17 @@
         </ul>
         <p class="mb-2 text-xs">PROJECTS</p>
         <ul class="space-y-2">
-          <li>
-            <a
-              href="#"
-              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
-            >
-              <Folder />
-              <span>Project 1</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
-            >
-              <Folder />
-              <span>Project 2</span>
-            </a>
-          </li>
+          {#each $ProjectStore as { id, projectName } (id)}
+            <li>
+              <a
+                href="/project/{id}"
+                class="flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2"
+              >
+                <Folder />
+                <span>{projectName}</span>
+              </a>
+            </li>
+          {/each}
         </ul>
       </nav>
     </div>

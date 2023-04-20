@@ -4,7 +4,7 @@
 
   export let taskId: number;
   export let taskColor: string;
-  export let projectName: string;
+  export let projectName: string | undefined;
   export let taskName: string;
   export let taskPic: string;
   export let ownerName: string;
@@ -12,20 +12,11 @@
   export let isActive: boolean;
 
   function startTask(taskId: number) {
-    TimeEntriesCurrentStore.set({
-      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
-      taskId: taskId,
-      userId: 1,
-      projectId: 1,
-      projectName: 'Project 1',
-      projectColor: 'blue',
-      taskName: 'Backend',
-      description: '',
-      startTime: new Date(),
-      endTime: null,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    });
+    TimeEntriesCurrentStore.start(taskId);
+  }
+
+  function startStop(taskId: number) {
+    // TimeEntriesCurrentStore.start(taskId);
   }
 </script>
 

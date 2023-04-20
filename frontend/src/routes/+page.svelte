@@ -1,5 +1,6 @@
 <script lang="ts">
   import { TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
+  import { ProjectStore } from '$lib/stores/ProjectStore';
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
@@ -20,7 +21,7 @@
       <HomeScreenTaskTile
         taskId={3}
         taskColor="blue"
-        projectName="Project 2"
+        projectName={ProjectStore.findById(2)?.projectName}
         taskName="Build login functionality"
         taskPic={task3pic}
         ownerName="Nagisa"
@@ -30,7 +31,7 @@
       <HomeScreenTaskTile
         taskId={2}
         taskColor="red"
-        projectName="Project 1"
+        projectName={ProjectStore.findById(1)?.projectName}
         taskName="Prepare API docs"
         taskPic={task2pic}
         ownerName="Cinnamon"
@@ -40,7 +41,7 @@
       <HomeScreenTaskTile
         taskId={1}
         taskColor="blue"
-        projectName="Project 2"
+        projectName={ProjectStore.findById(2)?.projectName}
         taskName="Implement database for user authentication"
         taskPic={task1pic}
         ownerName="Nagisa"
