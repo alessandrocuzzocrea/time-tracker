@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
   import { fade, fly } from 'svelte/transition';
+  import { SidePaneStore, SidePaneStateEnum } from '$lib/stores/SidePaneStore';
 
   let width;
-  // let showSidePanel = true;
-  export let toggleSidePanel;
 </script>
 
 <aside class="relative z-10">
@@ -24,7 +23,9 @@
                 <div class="ml-3 flex h-7 items-center">
                   <button
                     class="rounded-md bg-white font-bold text-gray-400 hover:text-gray-500"
-                    on:click={toggleSidePanel}
+                    on:click={() => {
+                      SidePaneStore.closePane();
+                    }}
                   >
                     close
                   </button>
@@ -34,7 +35,13 @@
             <div class="relative mt-6 flex-1 px-4 sm:px-6">
               <div class="absolute inset-0 px-4 sm:px-6">
                 <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true">
-                  Some content
+                  {#if $SidePaneStore.state !== SidePaneStateEnum.Closed}
+                    {#if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
+                      <div>EDIT TIME ENTRY ID:{$SidePaneStore.id}</div>
+                    {:else}
+                      <div>UNHANDLED</div>
+                    {/if}
+                  {/if}
                 </div>
               </div>
             </div>

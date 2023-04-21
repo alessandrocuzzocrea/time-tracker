@@ -3,6 +3,7 @@
   import { fade } from 'svelte/transition';
   import { formatDuration } from '$lib/helpers/FormatDuration';
   import { Play, Pause, PencilSquare } from 'svelte-heros';
+  import { SidePaneStore } from '$lib/stores/SidePaneStore';
 
   export let id: number;
   export let projectName: string;
@@ -32,7 +33,7 @@
   }
 
   function edit(entryId: number) {
-    console.log(`edit entry: ${entryId}`);
+    SidePaneStore.editTimeEntry(entryId);
   }
 
   let formattedStartTime = startTime.toLocaleTimeString('en-US', {
