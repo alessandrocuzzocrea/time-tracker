@@ -1,6 +1,7 @@
 <script lang="ts">
   import { TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
   import { ProjectStore } from '$lib/stores/ProjectStore';
+  import { TaskStoreViewModelDerived } from '$lib/stores/TaskStoreViewModelDerived';
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
@@ -18,7 +19,19 @@
       <h2 class="align-text-bottom text-xs leading-8">View all →</h2>
     </div>
     <div class="flex flex-row space-x-8">
-      <HomeScreenTaskTile
+      {#each $TaskStoreViewModelDerived as { projectId, projectName, projectColor, taskId, taskName, ownerName } (taskId)}
+        <HomeScreenTaskTile
+          {taskId}
+          taskColor={projectColor}
+          {projectName}
+          {taskName}
+          taskPic={task3pic}
+          {ownerName}
+          ownerPic={avi2}
+          isActive={false}
+        />
+      {/each}
+      <!-- <HomeScreenTaskTile
         taskId={3}
         taskColor="blue"
         projectName={ProjectStore.findById(2)?.projectName}
@@ -47,7 +60,7 @@
         ownerName="Nagisa"
         ownerPic={avi2}
         isActive={false}
-      />
+      /> -->
     </div>
   </div>
   <div class="flex"><h2 class="font-bold">.</h2></div>
@@ -75,6 +88,10 @@
       />
     {/each}
   </div>
+{/each}
+
+{#each $TaskStoreViewModelDerived as { taskId, projectName } (taskId)}
+  <div>{projectName}</div>
 {/each}
 
 <!-- <img

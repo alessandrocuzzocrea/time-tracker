@@ -254,8 +254,13 @@ function createCurrentTimeEntryStore() {
 
 export const TimeEntriesCurrentStore = createCurrentTimeEntryStore();
 
-export const TimeEntriesStoreByDay = derived(TimeEntriesStore, ($TimeEntriesStore) => {
+export const TimeEntriesViewModelStore = derived(TimeEntriesStore, ($TimeEntriesStore) => {
   return $TimeEntriesStore
+});
+
+
+export const TimeEntriesStoreByDay = derived(TimeEntriesViewModelStore, ($TimeEntriesViewModelStore) => {
+  return $TimeEntriesViewModelStore
     .reduce((acc, entry) => {
       const date = new Date(entry.startTime).toLocaleDateString('en-US', {
         weekday: 'short',
