@@ -1,6 +1,6 @@
 import { writable, get } from 'svelte/store';
 
-type Project = {
+export type Project = {
   id: number;
   projectName: string;
   projectColor: string;

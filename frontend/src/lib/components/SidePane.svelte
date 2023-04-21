@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import { SidePaneStore, SidePaneStateEnum } from '$lib/stores/SidePaneStore';
+  import SidePaneEditTimeEntry from './SidePaneEditTimeEntry.svelte';
 
   let width;
 </script>
@@ -38,6 +39,7 @@
                   {#if $SidePaneStore.state !== SidePaneStateEnum.Closed}
                     {#if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
                       <div>EDIT TIME ENTRY ID:{$SidePaneStore.id}</div>
+                      <SidePaneEditTimeEntry />
                     {:else}
                       <div>UNHANDLED</div>
                     {/if}
