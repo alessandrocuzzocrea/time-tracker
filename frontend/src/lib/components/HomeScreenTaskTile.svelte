@@ -6,7 +6,7 @@
   export let taskColor: string;
   export let projectName: string | undefined;
   export let taskName: string;
-  export let taskPic: string;
+  export let taskIcon: string;
   export let ownerName: string;
   export let ownerPic: string;
   export let isActive: boolean;
@@ -35,7 +35,7 @@
         <PlayCircle variation="solid" />
       {/if}
     </div>
-    <img alt="..." src={taskPic} class="absolute -m-6 h-12 border-none align-middle" />
+    <img alt="..." src={taskIcon} class="absolute -m-6 h-12 border-none align-middle" />
   </div>
 
   <p class="mx-4 w-full flex-none text-xs text-slate-700">{projectName}</p>
