@@ -255,25 +255,27 @@ function createCurrentTimeEntryStore() {
 export const TimeEntriesCurrentStore = createCurrentTimeEntryStore();
 
 export const TimeEntriesViewModelStore = derived(TimeEntriesStore, ($TimeEntriesStore) => {
-  return $TimeEntriesStore
+  return $TimeEntriesStore;
 });
 
-
-export const TimeEntriesStoreByDay = derived(TimeEntriesViewModelStore, ($TimeEntriesViewModelStore) => {
-  return $TimeEntriesViewModelStore
-    .reduce((acc, entry) => {
-      const date = new Date(entry.startTime).toLocaleDateString('en-US', {
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short'
-      });
-      const group = acc.find((g) => g.date === date);
-      group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
-      return acc;
-    }, [])
-    .map((group) => {
-      group.entries.sort((a, b) => new Date(b.startTime) - new Date(a.startTime));
-      return group;
-    })
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-});
+export const TimeEntriesStoreByDay = derived(
+  TimeEntriesViewModelStore,
+  ($TimeEntriesViewModelStore) => {
+    return $TimeEntriesViewModelStore
+      .reduce((acc, entry) => {
+        const date = new Date(entry.startTime).toLocaleDateString('en-US', {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short'
+        });
+        const group = acc.find((g) => g.date === date);
+        group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
+        return acc;
+      }, [])
+      .map((group) => {
+        group.entries.sort((a, b) => new Date(b.startTime) - new Date(a.startTime));
+        return group;
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+);

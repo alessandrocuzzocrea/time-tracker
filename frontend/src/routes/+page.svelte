@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
-  import { ProjectStore } from '$lib/stores/ProjectStore';
   import { TaskStoreViewModelDerived } from '$lib/stores/TaskStoreViewModelDerived';
+  import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
@@ -28,7 +28,7 @@
           taskPic={task3pic}
           {ownerName}
           {ownerPic}
-          isActive={false}
+          isActive={taskId === $TimeEntriesCurrentStore?.taskId}
         />
       {/each}
       <!-- <HomeScreenTaskTile

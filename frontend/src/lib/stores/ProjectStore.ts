@@ -28,7 +28,7 @@ function createProjectStore() {
     return get(store).find((e) => e.id === id);
   }
 
-  setTimeout(() => set(projects), 5000);
+  setTimeout(() => set(projects), 0);
 
   return {
     subscribe,
