@@ -1,6 +1,6 @@
 <script lang="ts">
   import { TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
-  import { TaskStoreViewModelDerived } from '$lib/stores/TaskStoreViewModelDerived';
+  import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
   import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
@@ -19,7 +19,7 @@
       <h2 class="align-text-bottom text-xs leading-8">View all →</h2>
     </div>
     <div class="flex flex-row space-x-8">
-      {#each $TaskStoreViewModelDerived as { projectId, projectName, projectColor, taskId, taskName, ownerName, ownerPic } (taskId)}
+      {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, ownerName, ownerPic } (taskId)}
         <HomeScreenTaskTile
           {taskId}
           taskColor={projectColor}
@@ -90,7 +90,7 @@
   </div>
 {/each}
 
-{#each $TaskStoreViewModelDerived as { taskId, projectName } (taskId)}
+{#each $TaskViewModelDerivedStore as { taskId, projectName } (taskId)}
   <div>{projectName}</div>
 {/each}
 
