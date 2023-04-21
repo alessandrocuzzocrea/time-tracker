@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TimeEntriesStoreByDay } from '$lib/stores/TimeEntryStore';
+  import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
   import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
   import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { fade } from 'svelte/transition';
@@ -72,7 +72,7 @@
   </div>
 </div>
 
-{#each $TimeEntriesStoreByDay as { date, entries } (date)}
+{#each $TimeEntryByDayDerivedStore as { date, entries } (date)}
   <h2 class="mb-4 font-bold" transition:fade|local>{date}</h2>
   <div class="mb-6 overflow-hidden rounded-lg bg-white">
     {#each entries as { id, projectName, projectColor, taskId, taskName, description, startTime, endTime } (id)}

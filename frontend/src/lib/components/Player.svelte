@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TimeEntriesStore, TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
+  import { TimeEntryStore, TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
   import { formatDuration } from '$lib/helpers/FormatDuration';
   import { slide } from 'svelte/transition';
 
@@ -11,7 +11,7 @@
 
   function handleClick() {
     if ($TimeEntriesCurrentStore) {
-      TimeEntriesStore.add({
+      TimeEntryStore.add({
         ...$TimeEntriesCurrentStore,
         description: description,
         endTime: new Date()
