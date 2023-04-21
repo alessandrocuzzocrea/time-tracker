@@ -3,10 +3,10 @@
   import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
 
   export let taskId: number;
-  export let taskColor: string;
-  export let projectName: string | undefined;
   export let taskName: string;
   export let taskIcon: string;
+  export let projectColor: string;
+  export let projectName: string | undefined;
   export let ownerName: string;
   export let ownerPic: string;
   export let isActive: boolean;
@@ -23,7 +23,7 @@
 <div
   class="relative flex h-48 w-64 flex-col overflow-hidden rounded-3xl bg-white shadow-md transition duration-300 ease-in-out hover:shadow-xl"
 >
-  <div class="h-10 w-64 flex-initial bg-{taskColor}-400" />
+  <div class="h-10 w-64 flex-initial bg-{projectColor}-400" />
   <div class="relative flex flex-none justify-center pb-6">
     <div
       on:click={startTask(taskId)}

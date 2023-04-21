@@ -90,10 +90,6 @@
   </div>
 {/each}
 
-{#each $TaskViewModelDerivedStore as { taskId, projectName } (taskId)}
-  <div>{projectName}</div>
-{/each}
-
 <!-- <img
   src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
   alt=""
