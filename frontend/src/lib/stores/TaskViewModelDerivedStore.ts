@@ -19,6 +19,7 @@ export const TaskViewModelDerivedStore = derived(
         projectColor: project?.projectColor,
         taskId: task.id,
         taskName: task.name,
+        taskIcon: task?.icon,
         ownerName: owner?.name,
         ownerPic: owner?.avi
       };

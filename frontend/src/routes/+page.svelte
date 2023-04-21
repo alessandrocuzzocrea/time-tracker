@@ -19,13 +19,13 @@
       <h2 class="align-text-bottom text-xs leading-8">View all →</h2>
     </div>
     <div class="flex flex-row space-x-8">
-      {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, ownerName, ownerPic } (taskId)}
+      {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, taskIcon, ownerName, ownerPic } (taskId)}
         <HomeScreenTaskTile
           {taskId}
           taskColor={projectColor}
           {projectName}
           {taskName}
-          taskPic={task3pic}
+          {taskIcon}
           {ownerName}
           {ownerPic}
           isActive={taskId === $TimeEntriesCurrentStore?.taskId}

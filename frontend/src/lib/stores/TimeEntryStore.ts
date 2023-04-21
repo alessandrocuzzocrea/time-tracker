@@ -3,11 +3,11 @@ import { writable, derived, get } from 'svelte/store';
 export type TimeEntry = {
   id: number;
   userId: number;
-  projectId: number;
-  projectName: string;
-  projectColor: string;
+  // projectId: number;
+  // projectName: string;
+  // projectColor: string;
   taskId: number;
-  taskName: string;
+  // taskName: string;
   description: string;
   startTime: Date;
   endTime: Date | null;
@@ -33,9 +33,9 @@ function createTimeEntryStore() {
     // },
     {
       id: 2,
-      taskId: 1,
+      taskId: 2,
       userId: 1,
-      projectId: 1,
+      projectId: 2,
       projectName: 'Project 1',
       projectColor: 'red',
       taskName: 'Backend',
@@ -206,7 +206,7 @@ function createTimeEntryStore() {
 
   return {
     subscribe,
-    add: (newEntry) => update((e) => [...e, newEntry])
+    add: (newEntry: TimeEntry) => update((e) => [...e, newEntry])
     // startStop: (entryId) => {
     //     if (entryId === null || entryId === undefined) {
     //         const prevEntry = $store[$store.length - 1];

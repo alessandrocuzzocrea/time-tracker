@@ -1,7 +1,7 @@
 import { derived } from 'svelte/store';
-import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
+import { TimeEntryDerivedStore } from '$lib/stores/TimeEntryDerivedStore';
 
-export const TimeEntryByDayDerivedStore = derived(TimeEntryStore, ($TimeEntryStore) => {
+export const TimeEntryByDayDerivedStore = derived(TimeEntryDerivedStore, ($TimeEntryStore) => {
   return $TimeEntryStore
     .reduce((acc, entry) => {
       const date = new Date(entry.startTime).toLocaleDateString('en-US', {
