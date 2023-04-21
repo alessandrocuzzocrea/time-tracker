@@ -19,6 +19,7 @@ type TaskViewModel = {
   taskId: number;
   taskName: string;
   ownerName: string;
+  ownerPic: string;
   // description: string;
   // startTime: Date;
   // endTime: Date | null;
@@ -39,7 +40,8 @@ export const TaskStoreViewModelDerived = derived(
         projectColor: project?.projectColor,
         taskId: task.id,
         taskName: task.name,
-        ownerName: 'ownerName'
+        ownerName: 'Nagisa',
+        ownerPic: '/src/lib/assets/avi-2.jpg'
       };
     });
   }

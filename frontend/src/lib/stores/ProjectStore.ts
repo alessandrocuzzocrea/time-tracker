@@ -11,21 +11,24 @@ function createProjectStore() {
     {
       id: 1,
       projectName: 'Project 1',
-      projectColor: 'red',
+      projectColor: 'red'
     },
     {
       id: 2,
       projectName: 'Project 2',
-      projectColor: 'blue',
+      projectColor: 'blue'
     }
   ];
 
-  const store = writable(projects);
-  const { subscribe } = store;
+  // const store = writable(projects);
+  const store = writable<Project[]>([]);
+  const { subscribe, set } = store;
 
   function findById(id: number) {
-    return get(store).find(e => e.id === id);
+    return get(store).find((e) => e.id === id);
   }
+
+  setTimeout(() => set(projects), 5000);
 
   return {
     subscribe,
@@ -34,4 +37,3 @@ function createProjectStore() {
 }
 
 export const ProjectStore = createProjectStore();
-
