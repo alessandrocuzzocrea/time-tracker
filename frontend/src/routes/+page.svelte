@@ -5,6 +5,7 @@
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
+  import { formatDuration2 } from '$lib/helpers/FormatDuration';
 </script>
 
 <div class="mb-10 flex flex-row space-x-8">
@@ -37,8 +38,8 @@
   </div>
 </div>
 
-{#each $TimeEntryByDayDerivedStore as { date, entries } (date)}
-  <h2 class="mb-4 font-bold" transition:fade|local>{date}</h2>
+{#each $TimeEntryByDayDerivedStore as { date, totalDuration, entries } (date)}
+  <h2 class="mb-4 font-bold" transition:fade|local>{date} - {formatDuration2(totalDuration)}</h2>
   <div class="mb-6 overflow-hidden rounded-lg bg-white">
     {#each entries as { id, projectName, projectColor, taskId, taskName, description, startTime, endTime } (id)}
       <TimeEntryRow

@@ -32,7 +32,7 @@ function createTimeEntryStore() {
     //   updatedAt: new Date('2023-06-19T12:00:00')
     // },
     {
-      id: 2,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 2,
       userId: 1,
       projectId: 2,
@@ -46,7 +46,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-19T15:00:00')
     },
     {
-      id: 3,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 2,
       userId: 1,
       projectId: 1,
@@ -60,7 +60,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-20T12:00:00')
     },
     {
-      id: 4,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 3,
       userId: 1,
       projectId: 1,
@@ -74,7 +74,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-20T16:00:00')
     },
     {
-      id: 5,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 1,
       projectId: 1,
@@ -88,7 +88,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-21T13:00:00')
     },
     {
-      id: 6,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 1,
       projectId: 1,
@@ -102,7 +102,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-21T16:00:00')
     },
     {
-      id: 7,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 1,
       projectId: 1,
@@ -116,7 +116,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-21T16:00:00')
     },
     {
-      id: 8,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 1,
       projectId: 1,
@@ -130,7 +130,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-03-22T12:00:00')
     },
     {
-      id: 9,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 1,
       projectId: 1,
@@ -144,7 +144,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-04-05T12:00:00')
     },
     {
-      id: 10,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 2,
       projectId: 1,
@@ -158,7 +158,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-04-05T15:00:00')
     },
     {
-      id: 11,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 3,
       projectId: 1,
@@ -172,7 +172,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-04-05T17:00:00')
     },
     {
-      id: 12,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 4,
       projectId: 1,
@@ -186,7 +186,7 @@ function createTimeEntryStore() {
       updatedAt: new Date('2023-04-05T12:00:00')
     },
     {
-      id: 13,
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
       taskId: 1,
       userId: 5,
       projectId: 1,

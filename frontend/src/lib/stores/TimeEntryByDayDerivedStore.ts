@@ -10,7 +10,12 @@ export const TimeEntryByDayDerivedStore = derived(TimeEntryDerivedStore, ($TimeE
         month: 'short'
       });
       const group = acc.find((g) => g.date === date);
-      group ? group.entries.push(entry) : acc.push({ date, entries: [entry] });
+      if (group) {
+        group.entries.push(entry);
+        group.totalDuration += (entry.endTime - entry.startTime);
+      } else {
+        acc.push({ date, entries: [entry], totalDuration: (entry.endTime - entry.startTime) });
+      }
       return acc;
     }, [])
     .map((group) => {
