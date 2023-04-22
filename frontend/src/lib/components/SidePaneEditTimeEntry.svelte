@@ -10,6 +10,8 @@
   let description: string | undefined;
   let startTime: Date | undefined;
   let endTime: Date | undefined | null;
+  let startTimeString: string;
+  let endTimeString: string;
 
   let tasks: any[] = [];
 
@@ -40,15 +42,34 @@
     const timeEntry = TimeEntryStore.findById(timeEntryId);
     taskId = timeEntry?.taskId;
     description = timeEntry?.description;
-    startTime = timeEntry?.startTime;
-    endTime = timeEntry?.endTime;
+    // startTime = timeEntry?.startTime;
+    // endTime = timeEntry?.endTime;
 
-    console.log(timeEntry?.startTime);
-    console.log(startTime);
+    startTimeString = timeEntry?.startTime?.toISOString().slice(0, 16);
+    endTimeString = timeEntry?.endTime?.toISOString().slice(0, 16);
+    // console.log(timeEntry?.startTime);
+    // console.log(startTime);
   });
 
-  $: startTimeString = startTime?.toISOString().slice(0, 16);
-  $: endTimeString = endTime?.toISOString().slice(0, 16);
+  // $: startTimeString = startTime?.toISOString().slice(0, 16);
+  // $: endTimeString = endTime?.toISOString().slice(0, 16);
+  $: startDate = new Date(startTimeString);
+  $: endDate = new Date(endTimeString);
+
+  $: console.log(`start: ${startDate} - end: ${endDate}`);
+
+  // let now = new Date(),
+  //   month = '' + (now.getMonth() + 1),
+  //   day = '' + now.getDate(),
+  //   year = now.getFullYear(),
+  //   dateString;
+
+  // $: if (month.length < 2) month = '0' + month;
+
+  // $: if (day.length < 2) day = '0' + day;
+
+  // $: console.log(dateString);
+  // $: dateString = [year, month, day].join('-');
 </script>
 
 <div class="flex flex-col">
@@ -63,6 +84,10 @@
 
   <label for="description">Description:</label>
   <textarea id="description" bind:value={description} />
+  <!-- 
+  <label>
+    <input type="date" bind:value={dateString} />
+  </label> -->
 
   <label for="start-time">Start:</label>
   <input bind:value={startTimeString} type="datetime-local" id="start-time" name="start-time" />
@@ -71,7 +96,7 @@
   <input bind:value={endTimeString} type="datetime-local" id="end-time" name="end-time" />
 
   <p>Duration:</p>
-  <p>{formatDuration(startTime, endTime)}</p>
+  <p>{formatDuration(startDate, endDate)}</p>
 
   <button>OK</button>
 </div>
