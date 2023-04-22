@@ -40,7 +40,7 @@
 
 {#each $TimeEntryByDayDerivedStore as { date, totalDuration, entries } (date)}
   <h2 class="mb-4 font-bold" transition:fade|local>{date} - {formatDuration2(totalDuration)}</h2>
-  <div class="mb-6 overflow-hidden rounded-lg bg-white">
+  <div class="mx-4 mb-6 overflow-hidden rounded-lg bg-white">
     {#each entries as { id, projectName, projectColor, taskId, taskName, description, startTime, endTime } (id)}
       <TimeEntryRow
         {id}

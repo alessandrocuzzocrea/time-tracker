@@ -50,7 +50,7 @@
 </script>
 
 <div
-  class="group flex flex-row items-center border-b-slate-300 p-4 [&:not(:last-child)]:border-b"
+  class="group flex flex-row items-center border-b-slate-300 p-4 transition duration-300 ease-in-out hover:shadow-inner [&:not(:last-child)]:border-b"
   transition:fade|local
 >
   <div class="h-4 w-4 flex-none rounded-full bg-{projectColor}-400" />
