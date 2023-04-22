@@ -1,11 +1,19 @@
 <script lang="ts">
+  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
   import { onMount } from 'svelte';
+  import { formatDuration } from '$lib/helpers/FormatDuration';
 
   import type { Project } from '$lib/stores/ProjectStore';
   import type { Task } from '$lib/stores/TaskStore';
 
-  let taskSelected = 1;
-  let tasks = [];
+  let taskId: number | undefined;
+  let description: string | undefined;
+  let startTime: Date | undefined;
+  let endTime: Date | undefined | null;
+
+  let tasks: any[] = [];
+
+  export let timeEntryId: number;
 
   onMount(async () => {
     tasks = [
@@ -28,18 +36,24 @@
         projectName: 'Project 2'
       }
     ];
+
+    const timeEntry = TimeEntryStore.findById(timeEntryId);
+    taskId = timeEntry?.taskId;
+    description = timeEntry?.description;
+    startTime = timeEntry?.startTime;
+    endTime = timeEntry?.endTime;
+
+    console.log(timeEntry?.startTime);
+    console.log(startTime);
   });
+
+  $: startTimeString = startTime?.toISOString().slice(0, 16);
+  $: endTimeString = endTime?.toISOString().slice(0, 16);
 </script>
 
 <div class="flex flex-col">
-  <!-- <label for="project-select">Project:</label>
-  <select name="pets" id="project-select">
-    <option value="1">Project1</option>
-    <option value="2">Project2</option>
-  </select> -->
-
   <label for="task-select">Task:</label>
-  <select bind:value={taskSelected} name="tasks" id="task-select">
+  <select bind:value={taskId} name="tasks" id="task-select">
     {#each tasks as task}
       <option value={task.id}>
         {task.projectName} - {task.name}
@@ -48,27 +62,16 @@
   </select>
 
   <label for="description">Description:</label>
-  <textarea id="description">Desc</textarea>
+  <textarea id="description" bind:value={description} />
 
   <label for="start-time">Start:</label>
-  <input
-    type="datetime-local"
-    id="start-time"
-    name="start-time"
-    value="2018-06-12T19:30"
-    min="2018-06-07T00:00"
-    max="2018-06-14T00:00"
-  />
+  <input bind:value={startTimeString} type="datetime-local" id="start-time" name="start-time" />
 
   <label for="end-time">End:</label>
-  <input
-    type="datetime-local"
-    id="end-time"
-    name="end-time"
-    value="2018-06-12T19:30"
-    min="2018-06-07T00:00"
-    max="2018-06-14T00:00"
-  />
+  <input bind:value={endTimeString} type="datetime-local" id="end-time" name="end-time" />
+
+  <p>Duration:</p>
+  <p>{formatDuration(startTime, endTime)}</p>
 
   <button>OK</button>
 </div>

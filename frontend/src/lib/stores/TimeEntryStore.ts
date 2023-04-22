@@ -206,7 +206,8 @@ function createTimeEntryStore() {
 
   return {
     subscribe,
-    add: (newEntry: TimeEntry) => update((e) => [...e, newEntry])
+    add: (newEntry: TimeEntry) => update((e) => [...e, newEntry]),
+    findById: (id: number) => get(store).find((e) => e.id === id)
     // startStop: (entryId) => {
     //     if (entryId === null || entryId === undefined) {
     //         const prevEntry = $store[$store.length - 1];

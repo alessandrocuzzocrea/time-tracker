@@ -39,7 +39,7 @@
                   {#if $SidePaneStore.state !== SidePaneStateEnum.Closed}
                     {#if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
                       <div>EDIT TIME ENTRY ID:{$SidePaneStore.id}</div>
-                      <SidePaneEditTimeEntry />
+                      <SidePaneEditTimeEntry timeEntryId={$SidePaneStore.id} />
                     {:else}
                       <div>UNHANDLED</div>
                     {/if}
