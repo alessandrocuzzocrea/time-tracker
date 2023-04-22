@@ -29,43 +29,13 @@
           isActive={taskId === $TimeEntriesCurrentStore?.taskId}
         />
       {/each}
-      <!-- <HomeScreenTaskTile
-        taskId={3}
-        taskColor="blue"
-        projectName={ProjectStore.findById(2)?.projectName}
-        taskName="Build login functionality"
-        taskPic={task3pic}
-        ownerName="Nagisa"
-        ownerPic={avi2}
-        isActive={false}
-      />
-      <HomeScreenTaskTile
-        taskId={2}
-        taskColor="red"
-        projectName={ProjectStore.findById(1)?.projectName}
-        taskName="Prepare API docs"
-        taskPic={task2pic}
-        ownerName="Cinnamon"
-        ownerPic={avi3}
-        isActive={false}
-      />
-      <HomeScreenTaskTile
-        taskId={1}
-        taskColor="blue"
-        projectName={ProjectStore.findById(2)?.projectName}
-        taskName="Implement database for user authentication"
-        taskPic={task1pic}
-        ownerName="Nagisa"
-        ownerPic={avi2}
-        isActive={false}
-      /> -->
     </div>
   </div>
   <div class="flex"><h2 class="font-bold">.</h2></div>
   <div class="flex flex-col">
     <h2 class="font-bold">Reports</h2>
     <div class="flex flex-row space-x-8">
-      <HomeScreenTaskTile projectPic={task1pic} fullName="Nagisa" avi={avi2} />
+      <HomeScreenTaskTile projectPic={task1pic} fullName="Nagisa" />
     </div>
   </div>
 </div>
