@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+namespace TimeTracker;
+
 public abstract class ApiBaseController : ControllerBase
 {
     private readonly UserManager<ApplicationUser> _userManager;

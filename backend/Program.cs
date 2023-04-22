@@ -38,8 +38,11 @@ static void ConfigureServices(IServiceCollection services)
         options.Password.RequiredUniqueChars = 0;
     });
 
-    services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie();
+    services.ConfigureApplicationCookie(options =>
+    {
+        options.Cookie.Name = "TimeTracker";
+        options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+    });
 
     services.AddCors(options =>
     {

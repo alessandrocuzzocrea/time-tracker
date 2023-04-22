@@ -1,16 +1,19 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+namespace TimeTracker;
+
 [ApiController]
 [Route("api/[controller]")]
-public class LoginController : ApiBaseController
+public class LoginController : ControllerBase
 {
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public LoginController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) : base(userManager)
+    public LoginController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
         _signInManager = signInManager;
+        _userManager = userManager;
     }
 
     [HttpPost("login")]
