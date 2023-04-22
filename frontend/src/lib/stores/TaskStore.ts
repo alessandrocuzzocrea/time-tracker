@@ -1,4 +1,7 @@
 import { writable, get } from 'svelte/store';
+import task1pic from '$lib/assets/task-1.png';
+import task2pic from '$lib/assets/task-2.png';
+import task3pic from '$lib/assets/task-3.png';
 
 export type Task = {
   id: number;
@@ -14,7 +17,7 @@ function createTaskStore() {
     {
       id: 1,
       name: 'Prepare API docs',
-      icon: '/src/lib/assets/task-1.png',
+      icon: task1pic,
       projectId: 1,
       ownerId: 3,
       assigneeIds: [1]
@@ -22,7 +25,7 @@ function createTaskStore() {
     {
       id: 2,
       name: 'Implement database for user authentication',
-      icon: '/src/lib/assets/task-2.png',
+      icon: task2pic,
       projectId: 2,
       ownerId: 2,
       assigneeIds: [1]
@@ -30,7 +33,7 @@ function createTaskStore() {
     {
       id: 3,
       name: 'Build login functionality',
-      icon: '/src/lib/assets/task-3.png',
+      icon: task3pic,
       projectId: 2,
       ownerId: 2,
       assigneeIds: [1]

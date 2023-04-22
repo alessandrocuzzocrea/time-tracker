@@ -5,9 +5,6 @@
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
-  import task1pic from '$lib/assets/task-1.png';
-  import task2pic from '$lib/assets/task-2.png';
-  import task3pic from '$lib/assets/task-3.png';
 </script>
 
 <div class="mb-10 flex flex-row space-x-8">
@@ -35,7 +32,7 @@
   <div class="flex flex-col">
     <h2 class="font-bold">Reports</h2>
     <div class="flex flex-row space-x-8">
-      <HomeScreenTaskTile projectPic={task1pic} fullName="Nagisa" />
+      <HomeScreenTaskTile />
     </div>
   </div>
 </div>
