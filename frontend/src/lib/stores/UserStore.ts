@@ -1,4 +1,7 @@
 import { writable, get } from 'svelte/store';
+import avi1 from '$lib/assets/avi-1.jpg';
+import avi2 from '$lib/assets/avi-2.jpg';
+import avi3 from '$lib/assets/avi-3.jpg';
 
 export type User = {
   id: number;
@@ -11,17 +14,17 @@ function createUserStore() {
     {
       id: 1,
       name: 'Purin',
-      avi: '/src/lib/assets/avi-1.jpg'
+      avi: avi1
     },
     {
       id: 2,
       name: 'Nagisa',
-      avi: '/src/lib/assets/avi-2.jpg'
+      avi: avi2
     },
     {
       id: 3,
       name: 'Cinnamon',
-      avi: '/src/lib/assets/avi-3.jpg'
+      avi: avi3
     }
   ];
 
