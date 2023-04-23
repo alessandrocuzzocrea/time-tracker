@@ -2,7 +2,7 @@
   import { fade, fly } from 'svelte/transition';
   import { SidePaneStore, SidePaneStateEnum } from '$lib/stores/SidePaneStore';
   import SidePaneEditTimeEntry from './SidePaneEditTimeEntry.svelte';
-
+  import { XCircle } from 'svelte-heros';
   let width;
 </script>
 
@@ -21,24 +21,21 @@
             <div class="h-28 bg-blue-400 px-4 sm:px-6">
               <div class="relative flex h-full items-center justify-center">
                 <div class="absolute bottom-0 translate-y-1/2 transform text-4xl">🧳</div>
-                <div class="ml-3 flex h-7 items-center">
-                  <button
-                    class="rounded-md bg-white font-bold text-gray-400 hover:text-gray-500"
-                    on:click={() => {
-                      SidePaneStore.closePane();
-                    }}
-                  >
-                    close
-                  </button>
-                </div>
+                <button
+                  class="-translate-x-64 text-white"
+                  on:click={() => {
+                    SidePaneStore.closePane();
+                  }}
+                >
+                  <XCircle size="40" />
+                </button>
               </div>
             </div>
             <div class="relative mt-6 flex-1 px-4 sm:px-6">
               <div class="absolute inset-0 px-4 sm:px-6">
-                <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true">
+                <div class="h-full">
                   {#if $SidePaneStore.state !== SidePaneStateEnum.Closed}
                     {#if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
-                      <div>EDIT TIME ENTRY ID:{$SidePaneStore.id}</div>
                       <SidePaneEditTimeEntry timeEntryId={$SidePaneStore.id} />
                     {:else}
                       <div>UNHANDLED</div>

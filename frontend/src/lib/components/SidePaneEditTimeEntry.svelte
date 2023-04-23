@@ -54,52 +54,84 @@
     SidePaneStore.closePane();
   }
 
-  // $: startTimeString = startTime?.toISOString().slice(0, 16);
-  // $: endTimeString = endTime?.toISOString().slice(0, 16);
+  function del() {
+    TimeEntryStore.del(timeEntryId);
+    SidePaneStore.closePane();
+  }
+
   $: startDate = new Date(startTimeString);
   $: endDate = new Date(endTimeString);
-
-  $: console.log(`start: ${startDate} - end: ${endDate}`);
-
-  // let now = new Date(),
-  //   month = '' + (now.getMonth() + 1),
-  //   day = '' + now.getDate(),
-  //   year = now.getFullYear(),
-  //   dateString;
-
-  // $: if (month.length < 2) month = '0' + month;
-
-  // $: if (day.length < 2) day = '0' + day;
-
-  // $: console.log(dateString);
-  // $: dateString = [year, month, day].join('-');
 </script>
 
-<div class="flex flex-col">
-  <label for="task-select">Task:</label>
-  <select bind:value={taskId} name="tasks" id="task-select">
-    {#each tasks as task}
-      <option value={task.id}>
-        {task.projectName} - {task.name}
-      </option>
-    {/each}
-  </select>
+<div class="flex flex-auto flex-col space-y-4">
+  <p class="text-2xl">EDIT TIME ENTRY ID:{$SidePaneStore.id}</p>
 
-  <label for="description">Description:</label>
-  <textarea id="description" bind:value={description} />
-  <!-- 
-  <label>
-    <input type="date" bind:value={dateString} />
-  </label> -->
+  <div class="flex flex-col">
+    <label for="task-select" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+      >Task:</label
+    >
+    <select
+      bind:value={taskId}
+      name="tasks"
+      id="task-select"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+    >
+      {#each tasks as task}
+        <option value={task.id}>
+          {task.projectName} - {task.name}
+        </option>
+      {/each}
+    </select>
+  </div>
 
-  <label for="start-time">Start:</label>
-  <input bind:value={startTimeString} type="datetime-local" id="start-time" name="start-time" />
+  <div class="flex flex-col">
+    <label for="description" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+      >Description:</label
+    >
+    <textarea
+      id="description"
+      bind:value={description}
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+    />
+  </div>
 
-  <label for="end-time">End:</label>
-  <input bind:value={endTimeString} type="datetime-local" id="end-time" name="end-time" />
+  <div class="flex flex-col">
+    <label for="start-time" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+      >Start:</label
+    >
+    <input
+      bind:value={startTimeString}
+      type="datetime-local"
+      id="start-time"
+      name="start-time"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+    />
+  </div>
 
-  <p>Duration:</p>
-  <p>{formatDuration(startDate, endDate)}</p>
+  <div class="flex flex-col">
+    <label for="end-time" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+      >End:</label
+    >
+    <input
+      bind:value={endTimeString}
+      type="datetime-local"
+      id="end-time"
+      name="end-time"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+    />
+  </div>
 
-  <button on:click={saveEdit}>OK</button>
+  <div class="flex flex-col">
+    <p class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Duration:</p>
+    <p>{formatDuration(startDate, endDate)}</p>
+  </div>
+
+  <button
+    class="rounded bg-green-400 p-1 px-4 py-2 font-bold text-white hover:bg-green-700"
+    on:click={saveEdit}>Edit</button
+  >
+  <button
+    class="rounded bg-red-400 p-1 px-4 py-2 font-bold text-white hover:bg-red-700"
+    on:click={del}>Delete</button
+  >
 </div>
