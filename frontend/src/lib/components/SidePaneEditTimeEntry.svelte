@@ -1,5 +1,6 @@
 <script lang="ts">
   import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
+  import { SidePaneStore } from '$lib/stores/SidePaneStore';
   import { onMount } from 'svelte';
   import { formatDuration } from '$lib/helpers/FormatDuration';
 
@@ -52,7 +53,14 @@
   });
 
   function saveEdit() {
-    TimeEntryStore.edit(taskId, description, new Date(startTimeString), new Date(endTimeString));
+    TimeEntryStore.edit(
+      timeEntryId,
+      taskId,
+      description,
+      new Date(startTimeString),
+      new Date(endTimeString)
+    );
+    SidePaneStore.closePane();
   }
 
   // $: startTimeString = startTime?.toISOString().slice(0, 16);

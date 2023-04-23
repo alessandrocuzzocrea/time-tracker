@@ -206,27 +206,20 @@ function createTimeEntryStore() {
 
   function edit(
     timeEntryId: number,
+    taskId: number,
     description: string,
     startTime: Date,
     endTime: Date) {
     update(n => {
-      console.log(`edit: ${timeEntryId}`);
-      let timeEntry = n.find((e) => e.id === timeEntryId);
-      const index = n.findIndex(item => item.id === timeEntryId);
-      const newTimeEntry =
-      {
-        id: timeEntryId,
-        description: description,
-        userId: 1,
-        taskId: 1,
-        startTime: new Date('2023-03-20T09:00:00'),
-        endTime: new Date('2023-03-20T12:00:00'),
-        createdAt: new Date('2023-03-20T09:00:00'),
-        updatedAt: new Date('2023-03-20T12:00:00')
-      }
-
-      n.splice(index, 1, ...[newTimeEntry]);
-      return n;
+      return n.map(element => {
+        if (element.id === timeEntryId) {
+          element.taskId = taskId;
+          element.description = description;
+          element.startTime = startTime;
+          element.endTime = endTime;
+        }
+        return element;
+      })
     })
   }
 
