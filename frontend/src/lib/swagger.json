@@ -7,9 +7,7 @@
   "paths": {
     "/api/Login/login": {
       "post": {
-        "tags": [
-          "Login"
-        ],
+        "tags": ["Login"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -38,9 +36,7 @@
     },
     "/api/Login/logout": {
       "post": {
-        "tags": [
-          "Login"
-        ],
+        "tags": ["Login"],
         "responses": {
           "200": {
             "description": "Success"
@@ -50,9 +46,7 @@
     },
     "/api/Login/register": {
       "post": {
-        "tags": [
-          "Login"
-        ],
+        "tags": ["Login"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -81,9 +75,7 @@
     },
     "/api/Test": {
       "get": {
-        "tags": [
-          "Test"
-        ],
+        "tags": ["Test"],
         "responses": {
           "200": {
             "description": "Success",
@@ -117,9 +109,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Test"
-        ],
+        "tags": ["Test"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -165,9 +155,7 @@
     },
     "/api/Test/{id}": {
       "get": {
-        "tags": [
-          "Test"
-        ],
+        "tags": ["Test"],
         "parameters": [
           {
             "name": "id",
@@ -204,9 +192,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Test"
-        ],
+        "tags": ["Test"],
         "parameters": [
           {
             "name": "id",
@@ -245,9 +231,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Test"
-        ],
+        "tags": ["Test"],
         "parameters": [
           {
             "name": "id",
@@ -269,9 +253,7 @@
     },
     "/api/TimeEntry": {
       "post": {
-        "tags": [
-          "TimeEntry"
-        ],
+        "tags": ["TimeEntry"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -300,9 +282,7 @@
     },
     "/api/User/me": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "responses": {
           "200": {
             "description": "Success",
@@ -329,9 +309,7 @@
     },
     "/api/User/users": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "responses": {
           "200": {
             "description": "Success",
@@ -440,10 +418,7 @@
         "additionalProperties": false
       },
       "LoginViewModel": {
-        "required": [
-          "password",
-          "userName"
-        ],
+        "required": ["password", "userName"],
         "type": "object",
         "properties": {
           "userName": {
@@ -477,10 +452,7 @@
         "additionalProperties": false
       },
       "RegisterViewModel": {
-        "required": [
-          "password",
-          "userName"
-        ],
+        "required": ["password", "userName"],
         "type": "object",
         "properties": {
           "userName": {

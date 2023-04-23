@@ -12,9 +12,9 @@ export const TimeEntryByDayDerivedStore = derived(TimeEntryDerivedStore, ($TimeE
       const group = acc.find((g) => g.date === date);
       if (group) {
         group.entries.push(entry);
-        group.totalDuration += (entry.endTime - entry.startTime);
+        group.totalDuration += entry.endTime - entry.startTime;
       } else {
-        acc.push({ date, entries: [entry], totalDuration: (entry.endTime - entry.startTime) });
+        acc.push({ date, entries: [entry], totalDuration: entry.endTime - entry.startTime });
       }
       return acc;
     }, [])

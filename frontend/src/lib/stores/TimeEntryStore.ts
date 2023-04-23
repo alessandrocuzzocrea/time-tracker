@@ -143,9 +143,10 @@ function createTimeEntryStore() {
     taskId: number,
     description: string,
     startTime: Date,
-    endTime: Date) {
-    update(n => {
-      return n.map(element => {
+    endTime: Date
+  ) {
+    update((n) => {
+      return n.map((element) => {
         if (element.id === timeEntryId) {
           element.taskId = taskId;
           element.description = description;
@@ -154,8 +155,8 @@ function createTimeEntryStore() {
           element.endTime = endTime;
         }
         return element;
-      })
-    })
+      });
+    });
   }
 
   return {
@@ -204,8 +205,7 @@ function createCurrentTimeEntryStore() {
     subscribe,
     set,
     update,
-    start,
-
+    start
   };
 }
 
