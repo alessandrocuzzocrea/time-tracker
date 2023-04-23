@@ -51,6 +51,10 @@
     // console.log(startTime);
   });
 
+  function saveEdit() {
+    TimeEntryStore.edit(taskId, description, new Date(startTimeString), new Date(endTimeString));
+  }
+
   // $: startTimeString = startTime?.toISOString().slice(0, 16);
   // $: endTimeString = endTime?.toISOString().slice(0, 16);
   $: startDate = new Date(startTimeString);
@@ -98,5 +102,5 @@
   <p>Duration:</p>
   <p>{formatDuration(startDate, endDate)}</p>
 
-  <button>OK</button>
+  <button on:click={saveEdit}>OK</button>
 </div>

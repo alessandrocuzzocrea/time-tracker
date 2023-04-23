@@ -204,10 +204,37 @@ function createTimeEntryStore() {
   const store = writable(timeEntries);
   const { subscribe, set, update } = store;
 
+  function edit(
+    timeEntryId: number,
+    description: string,
+    startTime: Date,
+    endTime: Date) {
+    update(n => {
+      console.log(`edit: ${timeEntryId}`);
+      let timeEntry = n.find((e) => e.id === timeEntryId);
+      const index = n.findIndex(item => item.id === timeEntryId);
+      const newTimeEntry =
+      {
+        id: timeEntryId,
+        description: description,
+        userId: 1,
+        taskId: 1,
+        startTime: new Date('2023-03-20T09:00:00'),
+        endTime: new Date('2023-03-20T12:00:00'),
+        createdAt: new Date('2023-03-20T09:00:00'),
+        updatedAt: new Date('2023-03-20T12:00:00')
+      }
+
+      n.splice(index, 1, ...[newTimeEntry]);
+      return n;
+    })
+  }
+
   return {
     subscribe,
     add: (newEntry: TimeEntry) => update((e) => [...e, newEntry]),
-    findById: (id: number) => get(store).find((e) => e.id === id)
+    findById: (id: number) => get(store).find((e) => e.id === id),
+    edit
     // startStop: (entryId) => {
     //     if (entryId === null || entryId === undefined) {
     //         const prevEntry = $store[$store.length - 1];
@@ -249,7 +276,8 @@ function createCurrentTimeEntryStore() {
     subscribe,
     set,
     update,
-    start
+    start,
+
   };
 }
 
