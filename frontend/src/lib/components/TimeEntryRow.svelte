@@ -36,17 +36,17 @@
     SidePaneStore.editTimeEntry(entryId);
   }
 
-  let formattedStartTime = startTime.toLocaleTimeString('en-US', {
-    hour12: false,
-    hour: 'numeric',
-    minute: 'numeric'
-  });
+  // let formattedStartTime = startTime.toLocaleTimeString('en-US', {
+  //   hour12: false,
+  //   hour: 'numeric',
+  //   minute: 'numeric'
+  // });
 
-  let formattedEndTime = endTime.toLocaleTimeString('en-US', {
-    hour12: false,
-    hour: 'numeric',
-    minute: 'numeric'
-  });
+  // let formattedEndTime = endTime.toLocaleTimeString('en-US', {
+  //   hour12: false,
+  //   hour: 'numeric',
+  //   minute: 'numeric'
+  // });
 </script>
 
 <div
@@ -57,9 +57,21 @@
   <div class="mx-4 flex-none p-1 text-xs">{projectName}</div>
   <div class="mx-4 flex-none p-1">{taskName}</div>
   <div class="mx-4 grow p-1 text-slate-500">{description}</div>
-  <div class="ml-4 flex-none p-1">{formattedStartTime}</div>
+  <div class="ml-4 flex-none p-1">
+    {startTime.toLocaleTimeString('en-US', {
+      hour12: false,
+      hour: 'numeric',
+      minute: 'numeric'
+    })}
+  </div>
   <div class="flex-none p-1">-</div>
-  <div class="mr-4 flex-none p-1">{formattedEndTime}</div>
+  <div class="mr-4 flex-none p-1">
+    {endTime.toLocaleTimeString('en-US', {
+      hour12: false,
+      hour: 'numeric',
+      minute: 'numeric'
+    })}
+  </div>
   <div class="mx-4 flex-none p-1">{formatDuration(startTime, endTime)}</div>
   <button
     on:click={start(taskId)}

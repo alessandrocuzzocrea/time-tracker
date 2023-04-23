@@ -50,13 +50,7 @@
   });
 
   function saveEdit() {
-    TimeEntryStore.edit(
-      timeEntryId,
-      taskId,
-      description,
-      new Date(startTimeString),
-      new Date(endTimeString)
-    );
+    TimeEntryStore.edit(timeEntryId, taskId, description, startDate, endDate);
     SidePaneStore.closePane();
   }
 

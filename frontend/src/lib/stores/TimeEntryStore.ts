@@ -149,7 +149,7 @@ function createTimeEntryStore() {
         if (element.id === timeEntryId) {
           element.taskId = taskId;
           element.description = description;
-          debugger;
+          // debugger;
           element.startTime = startTime;
           element.endTime = endTime;
         }
