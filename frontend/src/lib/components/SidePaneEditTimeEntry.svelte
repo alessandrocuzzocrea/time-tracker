@@ -3,6 +3,7 @@
   import { SidePaneStore } from '$lib/stores/SidePaneStore';
   import { onMount } from 'svelte';
   import { formatDuration } from '$lib/helpers/FormatDuration';
+  import { formatDateTime } from '$lib/helpers/FormatDateTime';
 
   import type { Project } from '$lib/stores/ProjectStore';
   import type { Task } from '$lib/stores/TaskStore';
@@ -43,13 +44,9 @@
     const timeEntry = TimeEntryStore.findById(timeEntryId);
     taskId = timeEntry?.taskId;
     description = timeEntry?.description;
-    // startTime = timeEntry?.startTime;
-    // endTime = timeEntry?.endTime;
 
-    startTimeString = timeEntry?.startTime?.toISOString().slice(0, 16);
-    endTimeString = timeEntry?.endTime?.toISOString().slice(0, 16);
-    // console.log(timeEntry?.startTime);
-    // console.log(startTime);
+    startTimeString = formatDateTime(timeEntry.startTime);
+    endTimeString = formatDateTime(timeEntry.endTime);
   });
 
   function saveEdit() {
