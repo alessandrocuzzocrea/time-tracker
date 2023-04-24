@@ -7,6 +7,7 @@
   import { ProjectStore } from '$lib/stores/ProjectStore';
   import { SidePaneStore, SidePaneStateEnum } from '$lib/stores/SidePaneStore';
   import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
+  import { page } from '$app/stores';
 </script>
 
 <body class="bg-gray-200">
@@ -22,7 +23,9 @@
           <li class="">
             <a
               href="/"
-              class="bg-highlight-menu-custom text-gray-custom-2 hover:bg-highlight-menu-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class:bg-highlight-menu-custom={$page.route.id == '/'}
+              class:text-gray-custom-2={$page.route.id == '/'}
             >
               <CheckCircle />
               <span>Overview</span>
@@ -32,6 +35,8 @@
             <a
               href="/explore"
               class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class:bg-highlight-menu-custom={$page.route.id == '/explore'}
+              class:text-gray-custom-2={$page.route.id == '/explore'}
             >
               <GlobeAlt />
 
@@ -42,6 +47,8 @@
             <a
               href="/feed"
               class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class:bg-highlight-menu-custom={$page.route.id == '/feed'}
+              class:text-gray-custom-2={$page.route.id == '/feed'}
             >
               <Rss />
               <span>Feed</span>
@@ -51,6 +58,8 @@
             <a
               href="/history"
               class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class:bg-highlight-menu-custom={$page.route.id == '/history'}
+              class:text-gray-custom-2={$page.route.id == '/history'}
             >
               <CalendarDays />
               <span>History</span>
@@ -60,6 +69,8 @@
             <a
               href="/report"
               class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+              class:bg-highlight-menu-custom={$page.route.id == '/report'}
+              class:text-gray-custom-2={$page.route.id == '/report'}
             >
               <ChartPie />
               <span>Report</span>
@@ -73,6 +84,10 @@
               <a
                 href="/project/{id}"
                 class="hover:bg-highlight-menu-custom-2 hover:text-gray-custom-2 flex items-center space-x-2 rounded-lg px-3 py-2 transition-colors"
+                class:bg-highlight-menu-custom={$page.route.id === '/project/[id]' &&
+                  $page.params.id === id.toString()}
+                class:text-gray-custom-2={$page.route.id == '/project/[id]' &&
+                  $page.params.id === id.toString()}
               >
                 <Folder />
                 <span>{projectName}</span>
