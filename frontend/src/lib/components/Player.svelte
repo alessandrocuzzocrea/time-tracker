@@ -7,7 +7,7 @@
   let startTime: Date | null;
   let endTime: Date | null;
   let duration = 0;
-  let description: string;
+  let description: string = '';
   let clear: Timer;
 
   function handleClick() {
