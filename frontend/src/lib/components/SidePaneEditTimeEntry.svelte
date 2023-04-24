@@ -67,14 +67,12 @@
   <p class="text-2xl">EDIT TIME ENTRY ID:{$SidePaneStore.id}</p>
 
   <div class="flex flex-col">
-    <label for="task-select" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >Task:</label
-    >
+    <label for="task-select" class="mb-2 block text-sm font-medium text-gray-900">Task:</label>
     <select
       bind:value={taskId}
       name="tasks"
       id="task-select"
-      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
     >
       {#each tasks as task}
         <option value={task.id}>
@@ -85,44 +83,40 @@
   </div>
 
   <div class="flex flex-col">
-    <label for="description" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+    <label for="description" class="mb-2 block text-sm font-medium text-gray-900"
       >Description:</label
     >
     <textarea
       id="description"
       bind:value={description}
-      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
     />
   </div>
 
   <div class="flex flex-col">
-    <label for="start-time" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >Start:</label
-    >
+    <label for="start-time" class="mb-2 block text-sm font-medium text-gray-900">Start:</label>
     <input
       bind:value={startTimeString}
       type="datetime-local"
       id="start-time"
       name="start-time"
-      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
     />
   </div>
 
   <div class="flex flex-col">
-    <label for="end-time" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >End:</label
-    >
+    <label for="end-time" class="mb-2 block text-sm font-medium text-gray-900">End:</label>
     <input
       bind:value={endTimeString}
       type="datetime-local"
       id="end-time"
       name="end-time"
-      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
     />
   </div>
 
   <div class="flex flex-col">
-    <p class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Duration:</p>
+    <p class="mb-2 block text-sm font-medium text-gray-900">Duration:</p>
     <p>{formatDuration(startDate, endDate)}</p>
   </div>
 
