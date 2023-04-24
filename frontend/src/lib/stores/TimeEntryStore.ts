@@ -150,7 +150,6 @@ function createTimeEntryStore() {
         if (element.id === timeEntryId) {
           element.taskId = taskId;
           element.description = description;
-          // debugger;
           element.startTime = startTime;
           element.endTime = endTime;
         }
@@ -159,23 +158,22 @@ function createTimeEntryStore() {
     });
   }
 
+  function del(
+    timeEntryId: number,
+  ) {
+    update((n) => {
+      const i = n.findIndex(e => e.id === timeEntryId);
+      n.splice(i, 1);
+      return n;
+    });
+  }
+
   return {
     subscribe,
     add: (newEntry: TimeEntry) => update((e) => [...e, newEntry]),
     findById: (id: number) => get(store).find((e) => e.id === id),
-    edit
-    // startStop: (entryId) => {
-    //     if (entryId === null || entryId === undefined) {
-    //         const prevEntry = $store[$store.length - 1];
-    //         startTime = Date.now();
-    //         endTime = Date.now();
-    //         clear = setInterval(() => (endTime = Date.now()), 1000);
-    //     } else {
-    //         startTime = new Date();
-    //         endTime = new Date();
-    //         clearInterval(clear);
-    //     }
-    // }
+    edit,
+    del
   };
 }
 
