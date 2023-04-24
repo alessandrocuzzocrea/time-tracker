@@ -158,11 +158,9 @@ function createTimeEntryStore() {
     });
   }
 
-  function del(
-    timeEntryId: number,
-  ) {
+  function del(timeEntryId: number) {
     update((n) => {
-      const i = n.findIndex(e => e.id === timeEntryId);
+      const i = n.findIndex((e) => e.id === timeEntryId);
       n.splice(i, 1);
       return n;
     });

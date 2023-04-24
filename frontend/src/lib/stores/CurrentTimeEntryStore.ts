@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { TimeEntry } from '$lib/stores/TimeEntryStore'
+import type { TimeEntry } from '$lib/stores/TimeEntryStore';
 
 function createCurrentTimeEntryStore() {
   const { subscribe, set, update } = writable<TimeEntry>();
