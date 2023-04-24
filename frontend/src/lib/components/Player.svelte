@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { TimeEntryStore, TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
+  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
+  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
   import { formatDuration } from '$lib/helpers/FormatDuration';
   import { slide } from 'svelte/transition';
 
@@ -10,16 +11,16 @@
   let clear: Timer;
 
   function handleClick() {
-    if ($TimeEntriesCurrentStore) {
+    if ($CurrentTimeEntryStore) {
       TimeEntryStore.add({
-        ...$TimeEntriesCurrentStore,
+        ...$CurrentTimeEntryStore,
         description: description,
         endTime: new Date()
       });
-      TimeEntriesCurrentStore.set(null);
+      CurrentTimeEntryStore.set(null);
       startTime = endTime = null;
     } else {
-      TimeEntriesCurrentStore.set({
+      CurrentTimeEntryStore.set({
         id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         taskId: 1,
         userId: 1,
@@ -49,11 +50,11 @@
     }
   }
 
-  $: updateTimer($TimeEntriesCurrentStore);
+  $: updateTimer($CurrentTimeEntryStore);
   $: duration = endTime - startTime;
 
-  $: buttonLabel = $TimeEntriesCurrentStore ? 'Stop' : 'Start';
-  $: buttonClass = $TimeEntriesCurrentStore
+  $: buttonLabel = $CurrentTimeEntryStore ? 'Stop' : 'Start';
+  $: buttonClass = $CurrentTimeEntryStore
     ? 'bg-red-400 hover:bg-red-700'
     : 'bg-blue-400 hover:bg-blue-700';
 </script>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
   import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
-  import { TimeEntriesCurrentStore } from '$lib/stores/TimeEntryStore';
+  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
   import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
@@ -24,7 +24,7 @@
           {taskIcon}
           {ownerName}
           {ownerPic}
-          isActive={taskId === $TimeEntriesCurrentStore?.taskId}
+          isActive={taskId === $CurrentTimeEntryStore?.taskId}
         />
       {/each}
     </div>
