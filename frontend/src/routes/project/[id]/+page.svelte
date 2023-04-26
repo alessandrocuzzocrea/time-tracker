@@ -1,31 +1,20 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
-  import { TaskStore } from '$lib/stores/TaskStore';
   import { ProjectKanbanDerivedStore } from '$lib/stores/ProjectKanbanDerivedStore';
+  import { TaskStore } from '$lib/stores/TaskStore';
 
-  function dragstart(e, taskId) {
-    console.log(`dragstart ${taskId}`);
+  function dragstart(e: DragEvent, taskId: number) {
     e.dataTransfer.setData('taskId', taskId);
   }
 
-  function dragover(e) {
-    console.log('dragover');
-
-    e.preventDefault();
+  function dragover(e: DragEvent) {
+    e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.dropEffect = 'move';
   }
 
-  function drop(e, newStatus) {
-    console.log('drop');
-
-    e.preventDefault();
+  function drop(e: DragEvent, newStatus) {
     var taskId = parseInt(e.dataTransfer.getData('taskId'), 10);
-    console.log(`drop: task:${taskId}-newStatus:${newStatus}`);
     TaskStore.updateStatus(taskId, newStatus);
-    // var old_g = ev.dataTransfer.getData('group');
-    // const item = groups[old_g].items.splice(i, 1)[0];
-    // groups[new_g].items.push(item);
-    // groups = groups;
   }
 
   $: console.dir($ProjectKanbanDerivedStore);
@@ -36,16 +25,16 @@
 <div class="flex justify-between py-4">
   <div
     class="mx-4 w-1/3 bg-white p-4"
-    on:dragover={(event) => dragover(event)}
-    on:drop={(event) => drop(event, 0)}
+    on:dragover|preventDefault={(e) => dragover(e)}
+    on:drop|preventDefault={(e) => drop(e, 0)}
   >
     <h2 class="mb-4 text-lg font-medium">To Do</h2>
     {#each $ProjectKanbanDerivedStore as task (task.taskId)}
       {#if task.status === 0}
         <div
-          class="mb-2 rounded-lg bg-gray-100 p-2"
+          class="mb-2 rounded-lg bg-gray-100 p-2 shadow-sm transition duration-100 ease-in-out hover:shadow-md"
           draggable={true}
-          on:dragstart={(event) => dragstart(event, task.taskId)}
+          on:dragstart={(e) => dragstart(e, task.taskId)}
         >
           {task.taskName}
         </div>
@@ -55,8 +44,8 @@
 
   <div
     class="mx-4 w-1/3 bg-white p-4"
-    on:dragover={(event) => dragover(event)}
-    on:drop={(event) => drop(event, 1)}
+    on:dragover|preventDefault={(e) => dragover(e)}
+    on:drop|preventDefault={(e) => drop(e, 1)}
   >
     <h2 class="mb-4 text-lg font-medium">In Progress</h2>
     {#each $ProjectKanbanDerivedStore as task (task.taskId)}
@@ -64,7 +53,7 @@
         <div
           class="mb-2 rounded-lg bg-gray-100 p-2"
           draggable={true}
-          on:dragstart={(event) => dragstart(event, task.taskId)}
+          on:dragstart={(e) => dragstart(e, task.taskId)}
         >
           {task.taskName}
         </div>
@@ -74,8 +63,8 @@
 
   <div
     class="mx-4 w-1/3 bg-white p-4"
-    on:dragover={(event) => dragover(event)}
-    on:drop={(event) => drop(event, 2)}
+    on:dragover|preventDefault={(event) => dragover(event)}
+    on:drop|preventDefault={(event) => drop(event, 2)}
   >
     <h2 class="mb-4 text-lg font-medium">Done</h2>
     {#each $ProjectKanbanDerivedStore as task (task.taskId)}
