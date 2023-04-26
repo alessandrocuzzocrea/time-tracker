@@ -6,6 +6,7 @@
   import { SidePaneStore } from '$lib/stores/SidePaneStore';
   import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
   import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
+  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
   import { PlusCircle } from 'svelte-heros';
   import { fade } from 'svelte/transition';
 </script>

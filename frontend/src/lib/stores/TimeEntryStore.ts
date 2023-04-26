@@ -182,13 +182,20 @@ function createTimeEntryStore() {
     });
   }
 
+  function lastUpdated(taskId: number) {
+    if (get(store).length > 0) {
+      return get(store).filter(e => e.taskId === taskId).map(e => e.endTime).reduce((a, b) => a > b ? a : b);
+    }
+  }
+
   return {
     subscribe,
     add: (newEntry: TimeEntry) => update((e) => [...e, newEntry]),
     add2,
     findById: (id: number) => get(store).find((e) => e.id === id),
     edit,
-    del
+    del,
+    lastUpdated
   };
 }
 
