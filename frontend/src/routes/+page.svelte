@@ -9,26 +9,7 @@
   import { PlusCircle } from 'svelte-heros';
   import { flip } from 'svelte/animate';
   import { quintOut } from 'svelte/easing';
-  import { crossfade } from 'svelte/transition';
   import { fade } from 'svelte/transition';
-
-  const [send, receive] = crossfade({
-    duration: (d) => Math.sqrt(d * 200),
-
-    fallback(node, params) {
-      const style = getComputedStyle(node);
-      const transform = style.transform === 'none' ? '' : style.transform;
-
-      return {
-        duration: 200,
-        easing: quintOut,
-        css: (t) => `
-					transform: ${transform} scale(${t});
-					opacity: ${t}
-				`
-      };
-    }
-  });
 </script>
 
 <div class="mb-10 flex flex-row space-x-8">
@@ -39,7 +20,11 @@
     </div>
     <div class="flex flex-row space-x-8">
       {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, taskIcon, ownerName, ownerPic } (taskId)}
-        <div in:receive={{ key: taskId }} out:send={{ key: taskId }} animate:flip>
+        <div
+          animate:flip={{ duration: 1000, delay: 100, easing: quintOut }}
+          in:receive={{ key: taskId }}
+          out:send={{ key: taskId }}
+        >
           <HomeScreenTaskTile
             {taskId}
             taskColor={projectColor}
