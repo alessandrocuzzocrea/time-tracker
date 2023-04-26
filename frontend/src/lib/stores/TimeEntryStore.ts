@@ -138,6 +138,22 @@ function createTimeEntryStore() {
   const store = writable(timeEntries);
   const { subscribe, set, update } = store;
 
+  function add2(taskId: number,
+    description: string,
+    startTime: Date,
+    endTime: Date) {
+    update((e) => [...e, {
+      id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+      taskId,
+      userId: 1,
+      description,
+      startTime,
+      endTime,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }])
+  }
+
   function edit(
     timeEntryId: number,
     taskId: number,
@@ -169,6 +185,7 @@ function createTimeEntryStore() {
   return {
     subscribe,
     add: (newEntry: TimeEntry) => update((e) => [...e, newEntry]),
+    add2,
     findById: (id: number) => get(store).find((e) => e.id === id),
     edit,
     del

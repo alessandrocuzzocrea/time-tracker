@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { fade, fly } from 'svelte/transition';
   import { SidePaneStore, SidePaneStateEnum } from '$lib/stores/SidePaneStore';
   import SidePaneEditTimeEntry from './SidePaneEditTimeEntry.svelte';
+  import SidePaneNewTimeEntry from './SidePaneNewTimeEntry.svelte';
   import { XCircle } from 'svelte-heros';
+  import { fade, fly } from 'svelte/transition';
+
   let width;
 </script>
 
@@ -35,7 +37,9 @@
               <div class="absolute inset-0 px-4 sm:px-6">
                 <div class="h-full">
                   {#if $SidePaneStore.state !== SidePaneStateEnum.Closed}
-                    {#if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
+                    {#if $SidePaneStore.state === SidePaneStateEnum.NewTimeEntry}
+                      <SidePaneNewTimeEntry />
+                    {:else if $SidePaneStore.state === SidePaneStateEnum.EditTimeEntry}
                       <SidePaneEditTimeEntry timeEntryId={$SidePaneStore.id} />
                     {:else}
                       <div>UNHANDLED</div>

@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
-  import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
-  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
-  import { fade } from 'svelte/transition';
   import HomeScreenTaskTile from '$lib/components/HomeScreenTaskTile.svelte';
   import TimeEntryRow from '$lib/components/TimeEntryRow.svelte';
   import { formatDuration2 } from '$lib/helpers/FormatDuration';
+  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
+  import { SidePaneStore } from '$lib/stores/SidePaneStore';
+  import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
+  import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
+  import { PlusCircle } from 'svelte-heros';
+  import { fade } from 'svelte/transition';
 </script>
 
 <div class="mb-10 flex flex-row space-x-8">
@@ -37,6 +39,8 @@
     </div>
   </div>
 </div>
+
+<button on:click={SidePaneStore.newTimeEntry}><PlusCircle /></button>
 
 {#each $TimeEntryByDayDerivedStore as { date, totalDuration, entries } (date)}
   <div class="mb-4 flex flex-row space-x-4" transition:fade|local>

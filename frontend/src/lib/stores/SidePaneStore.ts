@@ -7,6 +7,7 @@ export class SidePaneState {
 
 export enum SidePaneStateEnum {
   Closed,
+  NewTimeEntry,
   EditTimeEntry
 }
 
@@ -20,6 +21,12 @@ function createStore() {
 
   return {
     subscribe,
+    newTimeEntry: () => {
+      set({
+        id: -1,
+        state: SidePaneStateEnum.NewTimeEntry
+      });
+    },
     editTimeEntry: (timeEntryId: number) => {
       set({
         id: timeEntryId,
