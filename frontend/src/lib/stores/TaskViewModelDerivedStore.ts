@@ -14,7 +14,7 @@ export const TaskViewModelDerivedStore = derived(
       const owner = UserStore.findById(task.ownerId);
       const project = ProjectStore.findById(task.projectId);
       const lastUpdated = TimeEntryStore.lastUpdated(task.id);
-      // debugger;
+
       return {
         projectId: project?.id,
         projectName: project?.projectName,

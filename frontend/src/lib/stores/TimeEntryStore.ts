@@ -183,9 +183,7 @@ function createTimeEntryStore() {
   }
 
   function lastUpdated(taskId: number) {
-    if (get(store).length > 0) {
-      return get(store).filter(e => e.taskId === taskId).map(e => e.endTime).reduce((a, b) => a > b ? a : b);
-    }
+    return get(store).filter(e => e.taskId === taskId).map(e => e.endTime).reduce((a, b) => a > b ? a : b);
   }
 
   return {

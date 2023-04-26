@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { PauseCircle, PlayCircle } from 'svelte-heros';
   import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
+  import { PauseCircle, PlayCircle } from 'svelte-heros';
 
   export let taskId: number;
   export let taskName: string;

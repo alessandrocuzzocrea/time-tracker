@@ -6,9 +6,29 @@
   import { SidePaneStore } from '$lib/stores/SidePaneStore';
   import { TaskViewModelDerivedStore } from '$lib/stores/TaskViewModelDerivedStore';
   import { TimeEntryByDayDerivedStore } from '$lib/stores/TimeEntryByDayDerivedStore';
-  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
   import { PlusCircle } from 'svelte-heros';
+  import { flip } from 'svelte/animate';
+  import { quintOut } from 'svelte/easing';
+  import { crossfade } from 'svelte/transition';
   import { fade } from 'svelte/transition';
+
+  const [send, receive] = crossfade({
+    duration: (d) => Math.sqrt(d * 200),
+
+    fallback(node, params) {
+      const style = getComputedStyle(node);
+      const transform = style.transform === 'none' ? '' : style.transform;
+
+      return {
+        duration: 200,
+        easing: quintOut,
+        css: (t) => `
+					transform: ${transform} scale(${t});
+					opacity: ${t}
+				`
+      };
+    }
+  });
 </script>
 
 <div class="mb-10 flex flex-row space-x-8">
@@ -19,16 +39,18 @@
     </div>
     <div class="flex flex-row space-x-8">
       {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, taskIcon, ownerName, ownerPic } (taskId)}
-        <HomeScreenTaskTile
-          {taskId}
-          taskColor={projectColor}
-          {projectName}
-          {taskName}
-          {taskIcon}
-          {ownerName}
-          {ownerPic}
-          isActive={taskId === $CurrentTimeEntryStore?.taskId}
-        />
+        <div in:receive={{ key: taskId }} out:send={{ key: taskId }} animate:flip>
+          <HomeScreenTaskTile
+            {taskId}
+            taskColor={projectColor}
+            {projectName}
+            {taskName}
+            {taskIcon}
+            {ownerName}
+            {ownerPic}
+            isActive={taskId === $CurrentTimeEntryStore?.taskId}
+          />
+        </div>
       {/each}
     </div>
   </div>
