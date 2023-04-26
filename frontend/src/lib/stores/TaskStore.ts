@@ -45,7 +45,7 @@ function createTaskStore() {
   ];
 
   const store = writable<Task[]>([]);
-  const { subscribe, set } = store;
+  const { subscribe, set, update } = store;
 
   setTimeout(() => set(tasks), 0);
 
@@ -55,7 +55,17 @@ function createTaskStore() {
 
   return {
     subscribe,
-    findById
+    findById,
+    updateStatus: (taskId: number, newStatus: number) => {
+      update((n) => {
+        return n.map((e) => {
+          if (e.id === taskId) {
+            e.status = newStatus;
+          }
+          return e;
+        });
+      });
+    }
   };
 }
 

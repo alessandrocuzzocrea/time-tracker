@@ -9,7 +9,7 @@ export const ProjectKanbanDerivedStore = derived(
   ([$page, $ProjectStore, $TaskStore]) => {
     return $TaskStore.filter(task => task.projectId === parseInt($page.params.id, 10)).map((task) => {
       const project = ProjectStore.findById(task?.projectId);
-
+      // debugger;
       return {
         taskId: task.id,
         projectId: task?.projectId,
