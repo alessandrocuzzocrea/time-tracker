@@ -10,6 +10,7 @@ export type Task = {
   projectId: number;
   ownerId: number;
   assigneeIds?: number[];
+  status: number;
 };
 
 function createTaskStore() {
@@ -20,7 +21,8 @@ function createTaskStore() {
       icon: task1pic,
       projectId: 1,
       ownerId: 3,
-      assigneeIds: [1]
+      assigneeIds: [1],
+      status: 0
     },
     {
       id: 2,
@@ -28,7 +30,8 @@ function createTaskStore() {
       icon: task2pic,
       projectId: 2,
       ownerId: 2,
-      assigneeIds: [1]
+      assigneeIds: [1],
+      status: 0
     },
     {
       id: 3,
@@ -36,7 +39,8 @@ function createTaskStore() {
       icon: task3pic,
       projectId: 2,
       ownerId: 2,
-      assigneeIds: [1]
+      assigneeIds: [1],
+      status: 0
     }
   ];
 
