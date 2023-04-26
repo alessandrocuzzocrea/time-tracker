@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
-  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
   import { formatDuration } from '$lib/helpers/FormatDuration';
+  import { CurrentTimeEntryDerivedStore } from '$lib/stores/CurrentTimeEntryDerivedStore';
+  import { CurrentTimeEntryStore } from '$lib/stores/CurrentTimeEntryStore';
+  import { TimeEntryStore } from '$lib/stores/TimeEntryStore';
   import { slide } from 'svelte/transition';
 
   let startTime: Date | null;
@@ -59,17 +60,22 @@
   class="flex flex-row items-center justify-between border-t border-slate-200 bg-white p-4"
   transition:slide|local
 >
+  <div class="h-4 w-4 flex-none rounded-full bg-{$CurrentTimeEntryDerivedStore.projectColor}-400" />
+
   <input
     type="text"
-    class="mr-2 flex flex-1 rounded border p-1 px-2 py-1"
+    class="mx-4 mr-2 flex flex-1 rounded border p-1 px-2 py-1"
     placeholder={"What's cookin'?"}
     bind:value={description}
   />
+  <p class="mx-2 text-xs">{$CurrentTimeEntryDerivedStore?.projectName}</p>
+  <p class="mx-2">{$CurrentTimeEntryDerivedStore?.taskName}</p>
   {#if startTime}
-    <p class="mr-2">{formatDuration(startTime, endTime)}</p>
+    <p class="mx-4 mr-2 basis-24 text-xl font-bold">{formatDuration(startTime, endTime)}</p>
   {/if}
-  <button on:click={handleClick} class={`${buttonClass} rounded p-1 px-4 py-2 font-bold text-white`}
-    >{buttonLabel}</button
+  <button
+    on:click={handleClick}
+    class={`${buttonClass} mx-4 rounded p-1 px-4 py-2 font-bold text-white`}>{buttonLabel}</button
   >
   <!-- <button class="rounded bg-green-400 p-1 px-4 py-2 font-bold text-white hover:bg-green-700"
       >+</button
