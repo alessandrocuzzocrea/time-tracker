@@ -20,11 +20,7 @@
     </div>
     <div class="flex flex-row space-x-8">
       {#each $TaskViewModelDerivedStore as { projectId, projectName, projectColor, taskId, taskName, taskIcon, ownerName, ownerPic } (taskId)}
-        <div
-          animate:flip={{ duration: 1000, delay: 100, easing: quintOut }}
-          in:receive={{ key: taskId }}
-          out:send={{ key: taskId }}
-        >
+        <div animate:flip={{ duration: 1000, delay: 100, easing: quintOut }}>
           <HomeScreenTaskTile
             {taskId}
             taskColor={projectColor}
